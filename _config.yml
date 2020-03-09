@@ -110,7 +110,8 @@ analytics:
 author:
   name             : "Haje Kim"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I'm working at <a href="https://www.oracle.com" target="_blank"> Oracle</a></br> **Solutions Architect** and </br> **Data Scientist**. </br> <a href="https://www.linkedin.com/in/hajekim/" target="_blank"> LinkedIn</a>"
+  # bio              : "I'm working at <a href="https://www.oracle.com" target="_blank"> Oracle</a></br> **Solutions Architect** and </br> **Data Scientist**. </br> <a href="https://www.linkedin.com/in/hajekim/" target="_blank"> LinkedIn</a>"
+  bio              : "I'm Awesome"
   location         : "Seoul, Republic of Korea"
   email            : "hajekim1@gmail.com"
   links:
