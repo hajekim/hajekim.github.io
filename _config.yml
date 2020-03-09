@@ -110,7 +110,7 @@ analytics:
 author:
   name             : "Haje Kim"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I'm **Solutions Architect** and **Data Scienctist**."
+  bio              : "I'm **Solutions Architect** and <br> **Data Scienctist**."
   location         : "Seoul, Republic of Korea"
   email            : "hajekim1@gmail.com"
   links:
