@@ -110,7 +110,7 @@ analytics:
 author:
   name             : "Haje Kim"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Solutions Architect and Data Scientist <br> Working at <a href='https://www.oracle.com' target='_blank'>Oracle Corporation</a>"
+  bio              : "- ** Solutions Architect** <br> - **Data Scientist** <br> Working at <a href='https://www.oracle.com' target='_blank'>Oracle Corporation</a>"
   location         : "Seoul, Republic of Korea"
   email            : "hajekim1@gmail.com"
   links:
