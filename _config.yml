@@ -110,7 +110,7 @@ analytics:
 author:
   name             : "Haje Kim"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Solutions Architect and Data Scientist <br> Working at <a href='https://www.oracle.com' target='_blank'>Oracle Corporation</a> <br> <a href='https://www.linkedin.com/in/hajekim/' target='_blank'>My LinkedIn Account</a>"
+  bio              : "Solutions Architect and Data Scientist <br> Working at <a href='https://www.oracle.com' target='_blank'>Oracle Corporation</a>"
   location         : "Seoul, Republic of Korea"
   email            : "hajekim1@gmail.com"
   links:
@@ -132,6 +132,9 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/hajekim/"
 
 # Site Footer
 footer:
