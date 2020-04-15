@@ -18,7 +18,7 @@ categories: jekyll 머신러닝
 
 ## 머신러닝
 
-머신러닝에 대해서 역사를 따라가면 아서 사무엘과 톰 미쉘을 만날 수 있습니다.
+머신러닝에 대해서 역사를 따라가면, 아서 사무엘과 톰 미첼을 빼놓을 수 없습니다.
 
 1959년, IBM의 아서 사무엘(Arthur Lee Samuel)이 '머신러닝'이라는 단어를 대중화 하였습니다.
 (https://en.wikipedia.org/wiki/Arthur_Samuel)
