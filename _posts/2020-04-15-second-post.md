@@ -18,7 +18,7 @@ categories: jekyll 머신러닝
 
 ## 머신러닝
 
-머신러닝에 대해서 역사를 따라가면, 아서 사무엘과 톰 미첼을 빼놓을 수 없습니다.
+머신러닝에 대해서 역사를 따라가면, 아서 사무엘과 톰 미첼 선배님들을 빼놓을 수 없습니다.
 
 1959년, IBM의 아서 사무엘(Arthur Lee Samuel)이 '머신러닝'이라는 단어를 대중화 하였습니다.
 (https://en.wikipedia.org/wiki/Arthur_Samuel)
@@ -56,7 +56,7 @@ Python을 사용하기 위해서는 설치해야 합니다.
 Anaconda는 Python을 포함하여 자주 사용되는 패키지가 함께 제공되는 툴입니다.
 
 솔루션 엔지니어의 경험으로는 '통합'이라는 말은 못미더우니 저는 1번 방법으로, Python을 설치하겠습니다.
-Anaconda 설치 하실 분들께서는 https://www.anaconda.com/distribution/ 에서 설치하여 주세요.
+Anaconda 설치를 원하신다면 [여기](https://www.anaconda.com/distribution/) 에 가서 다운로드 후 설치 해주세요.
 
 #### Python 패키지 설치
 
