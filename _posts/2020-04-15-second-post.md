@@ -7,7 +7,7 @@ categories: jekyll 머신러닝
 요즘 자주 듣고 있는 단어입니다.
 
 기존에 업무를 하며 자주 듣던 단어는 오라클 미들웨어(Oracle Middleware), 웹 애플리케이션(Web Application)이었고, 퍼블릭 클라우드(Public Cloud)가 각광 받기 시작하며 아마존 웹 서비스(Amazon Web Services), 마이크로소프트 애저(Microsoft Azure), 구글 클라우드(Google Cloud)였습니다.  
-그리고 요즘은 머신러닝, 딥러닝(Deep Learning), 인공지능을 자주 듣고 있스습니다.
+그리고 요즘은 머신러닝, 딥러닝(Deep Learning), 인공지능을 자주 듣고 있습니다.
 
 빠르게 변화하는 기술 트렌드에 따라가기 위해 이 글을 작성합니다.
 
