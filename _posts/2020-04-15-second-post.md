@@ -3,12 +3,10 @@ title: "01 머신러닝 해보기: 시작하기 위한 준비물"
 date: 2020-04-15 18:00:00 +0900
 categories: jekyll 머신러닝
 ---
-```
-# 주의
-빠르게 변화하는 기술 트렌드에 따라가기 위해 이 글을 작성합니다.
-솔루션 엔지니어의 머신러닝 해보기입니다.
-저와 비슷한 환경에 처하시거나 경험이 있으신 분들께 재미와 도움이 되었으면 좋겠습니다.
-```
+> 주의
+> 빠르게 변화하는 기술 트렌드에 따라가기 위해 이 글을 작성합니다.
+> 솔루션 엔지니어의 머신러닝 해보기입니다.
+> 저와 비슷한 환경에 처하시거나 경험이 있으신 분들께 재미와 도움이 되었으면 좋겠습니다.
 
 '**머신러닝**', 요즘 엄청나게 듣고 살고 있습니다.  
 일을 할 떄 회사 내에서도, 고객 업무를 하면서도, 그리고 **이직**(!) 할 때 면접할 때 조차 나오는 마법의 단어입니다. (맙소사)  
@@ -18,42 +16,38 @@ categories: jekyll 머신러닝
 그러다 퍼블릭 클라우드(Public Cloud)가 떠오르더니 아마존 웹 서비스(Amazon Web Services), 마이크로소프트 애저(Microsoft Azure), 구글 클라우드(Google Cloud) 같은 여러 프로바이더가 나타나고 새로운 기술이 우후죽순 나타나고 있습니다.  
 클라우드 플랫폼에 많은 데이터를 때려 박기(?) 시작하면서 엄청나게 쌓인 데이터를 이용해서 데이터를 분석하고자 하는 수요가 생겨났습니다. 그래서 요즘은 **머신러닝, 딥러닝(Deep Learning), 인공지능**이 중요하게 된 시대에 살고 있습니다.
 
-머신러닝은 기계학습, 딥러닝은 심층학습으로 한글로 표현하는 단어도 있지만, 저는 외국계에서 일하고 있으니까 '머신러닝', '딥러닝'을 표현할 때 음독 그대로 사용하겠습니다. (이게 뭔 개소리야)
+머신러닝은 기계학습, 딥러닝은 심층학습으로 한글로 표현하는 단어도 있지만, 저는 외국계에서 일하고 있으니까 '머신러닝', '딥러닝'을 표현할 때 음독 그대로 사용하겠습니다. (~~이게 뭔 개소리야~~)
 
-
-
-
+---
 
 ## 머신러닝
 
-머신러닝에 대해서 역사를 따라가면, 아서 사무엘과 톰 미첼 선배님들을 빼놓을 수 없습니다.
-
-1959년, IBM의 아서 사무엘(Arthur Lee Samuel)이 '머신러닝'이라는 단어를 대중화 하였습니다.  
-(https://en.wikipedia.org/wiki/Arthur_Samuel)
-
-머신러닝 및 신경 과학 발전에 선구자적 공헌과 리더십의 톰 미첼 교수(Tom Mitchel, 카네기 멜론 대학)가 있습니다.
+머신러닝에 대해서 역사를 따라가면, 아서 사무엘(Arthur Lee Samuel) 선배와 톰 미첼(Tom M. Mitchel) 교수님을 빼놓을 수 없습니다.  
+1959년, IBM의 아서 사무엘 선배께서 '머신러닝'이라는 단어를 대중화 하였습니다.[^1]  
+머신러닝 및 신경 과학 발전에 선구자적 공헌과 리더십의 카네기 멜론 대학의 톰 미첼 교수님이 계십니다.
 
 아서 사무엘이 정의한 머신러닝
-```
-"컴퓨터가 명시적으로 프로그래밍 없이, 학습할 수 있도록 능력을 제공 하는 연구 분야
-The field of study that gives computers the ability to learn without being explicitly programmed"
-```
+> 컴퓨터가 명시적으로 프로그래밍 없이, 학습할 수 있도록 능력을 제공 하는 연구 분야
+>
+> The field of study that gives computers the ability to learn without being explicitly programmed
 
 
 
-톰 미첼 교수가 정의한 머신러닝
+톰 미첼 교수님께서 정의한 머신러닝
 
-```
-만약 작업(T)에 대해 성능 지표(P)에 의해 측정된 성능이 경험(E)에 따라 향상되었다면, 그 컴퓨터 프로그램은 작업(T)와 성능 지표(P)에 대해 경험(E)으로부터 학습했다고 말할 수 있다.
-```
+> 만약 작업(T)에 대해 성능 지표(P)에 의해 측정된 성능이 경험(E)에 따라 향상되었다면, 그 컴퓨터 프로그램은 작업(T)와 성능 지표(P)에 대해 경험(E)으로부터 **학습**했다고 말할 수 있다.
+>
+> A computer program is said to **learn** from experience *E* with respect to some class of tasks *T* and performance measure *P*, if its performance at tasks in *T*, as measured by *P*, improves with experience *E*.
 
+정리하면, 머신러닝은 **가지고 있는 데이터의 패턴을 학습하여 궁금한 데이터를 예측하는 기술**이라 볼 수 있을 듯 합니다.
 
+---
 
-## 준비물
+## 시작하기 위한 준비물
 
 ### Python
 
-머신러닝을 하기 위해서는 주로 Python과 R이 사용됩니다. 물론 Java 같은 다른 언어로도 사용이 가능합니다만, 사용자 생태계가 잘되어 있는 것이 Python이라고 생각하므로, 저는 Python을 사용해서 작성합니다.
+머신러닝을 하기 위해서는 주로 **Python**과 **R**이 사용됩니다. 물론 Java 같은 다른 언어로도 사용이 가능합니다만, 사용자 생태계가 잘되어 있는 것이 Python이라고 생각하므로, 저는 Python을 사용해서 작성합니다.
 
 Python을 사용하기 위해서는 설치해야 합니다.  
 방법이 두 가지가 있습니다.
@@ -72,7 +66,8 @@ Anaconda 설치를 원하신다면 [여기](https://www.anaconda.com/distributio
 macOS의 패키지 관리자인 Homebrew를 이용해서 파이썬 패키지를 설치하고 사용할 예정입니다.  
 Homebrew를 통해 최신 버전의 Python을 사용할 수 있습니다.
 
-//작성자 생각// Homebrew =  yum, apt-get on macOS
+> **작성자 생각**
+> Homebrew는  macOS판 yum, apt-get
 
 ```
 brew install python
@@ -117,7 +112,14 @@ brew list python
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
+
+
+Hoxy, Homebrew가 불편하시거나, Windows를 사용 중이시라면 Python 인스톨 파일 다운로드해서 설치할 수 있어요.
+
+https://www.python.org/downloads/
+
 Python 설치 고생하셨습니다.  
 이제 조금 쉬어 갈게요.
 
 [homebrew]: https://brew.sh/
+[^1]:Wikipedia Arthur Samuel, https://en.wikipedia.org/wiki/Arthur_Samuel/
