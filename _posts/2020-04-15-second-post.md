@@ -57,7 +57,11 @@ Python을 사용하기 위해서는 설치해야 합니다.
 
 Anaconda는 Python을 포함하여 자주 사용되는 패키지가 함께 제공되는 툴입니다.
 
-솔루션 엔지니어의 경험으로는 '통합'이라는 말은 못미더우니 저는 1번 방법으로, Python을 설치하겠습니다.  
+솔루션 엔지니어의 경험으로는 '통합'이라는 말은 못미더우니 저는 1번 방법으로, Python을 설치하겠습니다.
+
+Hoxy, Homebrew가 불편하시거나, Windows를 사용 중이시라면 Python 인스톨 파일 다운로드해서 설치할 수 있어요.
+[https://www.python.org/downloads/](https://www.python.org/downloads/)
+
 Anaconda 설치를 원하신다면 [여기](https://www.anaconda.com/distribution/) 에 가서 다운로드 후 설치 해주세요.
 
 #### Python 패키지 설치
@@ -111,12 +115,6 @@ brew list python
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
-
-
-
-Hoxy, Homebrew가 불편하시거나, Windows를 사용 중이시라면 Python 인스톨 파일 다운로드해서 설치할 수 있어요.
-
-https://www.python.org/downloads/
 
 Python 설치 고생하셨습니다.  
 이제 조금 쉬어 갈게요.
