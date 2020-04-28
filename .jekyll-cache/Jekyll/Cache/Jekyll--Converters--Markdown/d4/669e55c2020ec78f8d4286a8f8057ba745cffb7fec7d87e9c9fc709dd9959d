@@ -1,0 +1,4 @@
+I"<p>Search should be working even for complicated escape symbols</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed -i 's/\"hostname\"\:.*$/\"hostname\"\: \"'$IPADDR'\"\,/g' open-falcon/agent/config/cfg.json
+</code></pre></div></div>
+:ET
