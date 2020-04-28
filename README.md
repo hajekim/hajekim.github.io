@@ -1,1 +1,0 @@
-# hajekim.github.io
