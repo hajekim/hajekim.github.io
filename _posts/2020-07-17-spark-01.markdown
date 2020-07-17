@@ -1,0 +1,121 @@
+---
+title: "Apache Spark 01"
+date: 2020-07-17 18:00:00 +0900
+categories: Apache Spark 스파크 Python 분산처리 빅데이터
+---
+> **주의**  
+> 빠르게 변화하는 기술 트렌드를 힘겨운 분들게 작은 도움이 되고자 이 글을 작성합니다.  
+> 솔루션 엔지니어의 머신러닝 해보기입니다.  
+> 저와 비슷한 경험 혹은 업무에 계신 분들께 도움과 재미가 되었으면 좋겠습니다.
+
+**빅데이터** 환경을 위한 아파치 스파크Apache Spark에 대해서 알아봅시다.
+
+---
+
+## 분산처리의 역사
+
+> 개척 시대에는 무거운 짐을 싣기 위해서 소를 이용했는데, 한 마리의 소를 이용해서 짐을 실을 수 없을 경우에는 더 힘이 센 소를 찾는 대신 여러 마리의 소를 이용해 짐을 옮기는 방법을 택했다. 마찬가지로 많은 양의 데이터를 처리하기 위해 더 큰 컴퓨터를 찾는 대신 더 많은 컴퓨터 시스템을 구축하기 위해 노력해야 한다.
+>
+> 그레이스 호퍼 제독 (Rear Admiral Grace Murray Hopper), 미국 컴퓨터 과학자
+
+스파크는 빅데이터의 발전과 밀접한 관계가 있습니다. 스파크의 맵리듀스MapReduce 근간이 되는 하둡Hadoop은 구글Google과 야후Yahoo에 의해서 대중화가 되었습니다. 2003년에 구글이 발표한 논문 '[The Google File System](https://research.google.com/archive/gfs-sosp2003.pdf)'과 이듬해에 발표한 논문 '[MapReduce: Simplified Data Processing on Large Clusters](https://research.google.com/archive/mapreduce-osdi04.pdf)'으로 시작이 되었습니다. 하둡 초기 개발자 더그 커팅Dough Cutting과 마이크 카파렐라Mike Cafarella는 아파치 루씬Apache Lucene을 기반으로 웹 크롤러 프로젝트 너치Nutch를 진행하였습니다. 그러는 와중에 구글의 논문에 감명(?)을 받아 야후에서 하둡을 출시하게 되었습니다.
+
+
+
+## Install Kubernetes on CentOS 7
+
+CentOS7
+> 컴퓨터가 명시적으로 프로그래밍 없이, 학습할 수 있도록 능력을 제공 하는 연구 분야
+>
+> The field of study that gives computers the ability to learn without being explicitly programmed
+
+
+
+톰 미첼 교수님께서 정의한 머신러닝
+
+> 만약 작업(T)에 대해 성능 지표(P)에 의해 측정된 성능이 경험(E)에 따라 향상되었다면, 그 컴퓨터 프로그램은 작업(T)와 성능 지표(P)에 대해 경험(E)으로부터 **학습**했다고 말할 수 있다.
+>
+> A computer program is said to **learn** from experience *E* with respect to some class of tasks *T* and performance measure *P*, if its performance at tasks in *T*, as measured by *P*, improves with experience *E*.
+
+정리하면, 머신러닝은 **가지고 있는 데이터의 패턴을 학습하여 궁금한 데이터를 예측하는 기술**이라 볼 수 있을 듯 합니다.
+
+---
+
+## 시작하기 위한 준비물
+
+### Python
+
+머신러닝을 하기 위해서는 주로 **Python**과 **R**이 사용됩니다. 물론 Java 같은 다른 언어로도 사용이 가능합니다만, 사용자 생태계가 잘되어 있는 것이 Python이라고 생각하므로, 저는 Python을 사용해서 작성합니다.
+
+Python을 사용하기 위해서는 설치해야 합니다.  
+방법이 두 가지가 있습니다.
+
+1. Python 패키지 설치
+2. Anaconda 설치
+
+Anaconda는 Python을 포함하여 자주 사용되는 패키지가 함께 제공되는 툴입니다.
+
+솔루션 엔지니어의 경험으로는 '통합'이라는 말은 못미더우니 저는 1번 방법으로, Python을 설치하겠습니다.
+
+Hoxy, Homebrew가 불편하시거나, Windows를 사용 중이시라면 Python 인스톨 파일 다운로드해서 설치할 수 있어요.
+[https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+Anaconda 설치를 원하신다면 [여기](https://www.anaconda.com/distribution/) 에 가서 다운로드 후 설치 해주세요.
+
+#### Python 패키지 설치
+
+제 환경은 macOS Catalina와 High Sierra입니다.  
+macOS의 패키지 관리자인 Homebrew를 이용해서 파이썬 패키지를 설치하고 사용할 예정입니다.  
+Homebrew를 통해 최신 버전의 Python을 사용할 수 있습니다.
+
+> **작성자 생각**
+> Homebrew는  macOS판 yum, apt-get
+
+```
+brew install python
+```
+
+저는 3.7.7이 설치 되었네요.
+
+```
+brew list python
+/usr/local/Cellar/python/3.7.7/bin/2to3
+/usr/local/Cellar/python/3.7.7/bin/2to3-3.7
+/usr/local/Cellar/python/3.7.7/bin/easy_install-3.7
+/usr/local/Cellar/python/3.7.7/bin/idle3
+/usr/local/Cellar/python/3.7.7/bin/idle3.7
+/usr/local/Cellar/python/3.7.7/bin/pip3
+/usr/local/Cellar/python/3.7.7/bin/pip3.7
+/usr/local/Cellar/python/3.7.7/bin/pydoc3
+/usr/local/Cellar/python/3.7.7/bin/pydoc3.7
+/usr/local/Cellar/python/3.7.7/bin/python3
+/usr/local/Cellar/python/3.7.7/bin/python3-config
+/usr/local/Cellar/python/3.7.7/bin/python3.7
+/usr/local/Cellar/python/3.7.7/bin/python3.7-config
+/usr/local/Cellar/python/3.7.7/bin/python3.7m
+/usr/local/Cellar/python/3.7.7/bin/python3.7m-config
+/usr/local/Cellar/python/3.7.7/bin/pyvenv
+/usr/local/Cellar/python/3.7.7/bin/pyvenv-3.7
+/usr/local/Cellar/python/3.7.7/bin/wheel3
+/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/ (2827 files)
+/usr/local/Cellar/python/3.7.7/IDLE 3.app/Contents/ (8 files)
+/usr/local/Cellar/python/3.7.7/lib/pkgconfig/ (3 files)
+/usr/local/Cellar/python/3.7.7/libexec/bin/ (7 files)
+/usr/local/Cellar/python/3.7.7/libexec/pip/ (794 files)
+/usr/local/Cellar/python/3.7.7/libexec/setuptools/ (365 files)
+/usr/local/Cellar/python/3.7.7/libexec/wheel/ (60 files)
+/usr/local/Cellar/python/3.7.7/Python Launcher 3.app/Contents/ (16 files)
+/usr/local/Cellar/python/3.7.7/share/man/ (2 files)
+```
+
+만약, [Homebrew][homebrew]가 설치가 되지 않았다면 설치하고 Python을 설치 해주세요.
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+Python 설치 고생하셨습니다.  
+이제 조금 쉬어 갈게요.
+
+[homebrew]: https://brew.sh/
+[^1]:Wikipedia Arthur Samuel, https://en.wikipedia.org/wiki/Arthur_Samuel/
