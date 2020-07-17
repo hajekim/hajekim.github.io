@@ -3,7 +3,7 @@ title: "Apache Spark 톺아보기 01"
 date: 2020-07-17 18:00:00 +0900
 categories: Apache Spark 스파크 Python 분산처리 빅데이터
 ---
-아파치 스파크Apache Spark는 빅데이터와 오픈소스 소프트웨어의 중요한 요소입니다. 빅데이터 분석 분야에서 많이 사용되고 있으며, 관심과 사용도는 빠르게 증가하고 있습니다. 스파크에 대해 알아보고 가는 시간이 되었으면 좋겠습니다.
+아파치 스파크Apache Spark는 빅데이터와 오픈소스 소프트웨어의 중요한 요소입니다. 빅데이터 분석 분야에서 많이 사용되고 있으며, 관심과 사용도는 빠르게 증가하고 있습니다. On-Premise에 구성하여 사용하기도 하고 클라우드 서비스 프로바이더CSP, Cloud Service Provider에서 제공하는 PaaS 서비스로 이용 가능합니다. AWS EMR, Azure HDInsight, Google Cloud Dataproc, Oracle Cloud Dataflow가 있습니다. 요즘 시대에 사는 개발자/엔지니어라면 아는 척을 할 수 있어야 하겠지요.
 
 ---
 
@@ -20,96 +20,18 @@ categories: Apache Spark 스파크 Python 분산처리 빅데이터
 ## 아파치 하둡
 
 하둡의 큰 특징 두 가지가 있습니다. 바로 **데이터 지역성(Locality)**과 **비공유(Shared Nothing)**입니다. 데이터 지역성을 지닌 데이터 저장/처리 플랫폼입니다. 데이터 원격 처리 시스템 또는 호스트로 이동하여 처리하는 기존 방식과 다르게, **데이터가 있는 곳으로 이동해서 계산하는 데이터 처리 방식**입니다.  
-비공유는 클러스터에 각 노드가 독립적이며 CPU, 메모리와 같은 리소스를 노드 간에 공유하지 않고 처리할 수 있는 분산 파일 시스템입니다.  
-이러한 시스템 아키텍처로 데이터를 저장하고 처리하는데 불필요한 네트워크를 사용하지 않아 대역폭을 보존하며 데이터 접근성을 높였습니다.
+비공유는 클러스터에 각 노드가 독립적이며 CPU, 메모리와 같은 리소스를 노드 간에 공유하지 않고 처리할 수 있는 분산 파일 시스템입니다.  이러한 시스템 아키텍처로 데이터를 저장하고 처리하는데 불필요한 네트워크를 사용하지 않아 대역폭을 보존하며 데이터 접근성을 높였습니다.  
+하둡은 기록 연산 처리 관련 스키마가 없는 스키마-온-리드Schema-on-Read 시스템입니다. 비정형, 반정형 데이터부터 정형 데이터까지 광범위한 데이터를 저장하고 처리할 수 있습니다. HBase, Casandra 외에 NoSQL이 포함됩니다  
+이에 반대되는 스키마-온-라이트Schema-on-Write 시스템이 있습니다. Oracle Database, MySQL, MS-SQL 같은 관계형 데이터베이스를 생각하면 됩니다. 스키마는 작업 시 미리 정리가 되어 적용되는 형태입니다.  
+하둡은 큰 문제를 작은 문제의 집합으로 나누고 정리하며, 데이터 지역성과 비공유 개념을 적용합니다.
 
+![parallel-arhitectures.png](https://raw.github.com/alexeygrigorev/ulb-adb-project-couchbd/master/report/images/parallel-arhitectures.png)
 
+하둡의 핵심 구성요소가 있습니다. 하둡 분산 파일 시스템HDFS, Hadoop Distributed File System과 YARN, Yet Another Resource Negotiator입니다. HDFS는 하둡의 스토리지 서브시스템이며 YARN은 하둡의 프로세싱 또는 리소스 스케줄링 서브시스템입니다.
 
-톰 미첼 교수님께서 정의한 머신러닝
+![데이터분석 인프라 구축기 (2/4). Hadoop Cluster (YARN + HDFS) | by ...](https://miro.medium.com/max/858/1*yyEkiwQGIESn9UHL8hwjWg.png)
 
-> 만약 작업(T)에 대해 성능 지표(P)에 의해 측정된 성능이 경험(E)에 따라 향상되었다면, 그 컴퓨터 프로그램은 작업(T)와 성능 지표(P)에 대해 경험(E)으로부터 **학습**했다고 말할 수 있다.
->
-> A computer program is said to **learn** from experience *E* with respect to some class of tasks *T* and performance measure *P*, if its performance at tasks in *T*, as measured by *P*, improves with experience *E*.
+HDFS는 클러스터 하나 이상의 노드에 파일이 분산되어 있는 블록으로 구성된 가상 파일시스템입니다. 인제션이라는 프로세스는 파일시스템에 데이터를 업로드 할 때 구성된 블록의 크기에 따라 무작위로 파일을 나눕니다. 그 후에, 클러스터 노드 간에 블록을 분산 및 복제해서 내결함성을 달성하고, 데이터에 계산을 가져오는 목적으로 설계된 로컬에서 데이터를 처리할 수 있게 합니다.
 
-정리하면, 머신러닝은 **가지고 있는 데이터의 패턴을 학습하여 궁금한 데이터를 예측하는 기술**이라 볼 수 있을 듯 합니다.
+![Hadoop - HDFS Overview - Tutorialspoint](https://www.tutorialspoint.com/hadoop/images/hdfs_architecture.jpg)
 
----
-
-## 시작하기 위한 준비물
-
-### Python
-
-머신러닝을 하기 위해서는 주로 **Python**과 **R**이 사용됩니다. 물론 Java 같은 다른 언어로도 사용이 가능합니다만, 사용자 생태계가 잘되어 있는 것이 Python이라고 생각하므로, 저는 Python을 사용해서 작성합니다.
-
-Python을 사용하기 위해서는 설치해야 합니다.  
-방법이 두 가지가 있습니다.
-
-1. Python 패키지 설치
-2. Anaconda 설치
-
-Anaconda는 Python을 포함하여 자주 사용되는 패키지가 함께 제공되는 툴입니다.
-
-솔루션 엔지니어의 경험으로는 '통합'이라는 말은 못미더우니 저는 1번 방법으로, Python을 설치하겠습니다.
-
-Hoxy, Homebrew가 불편하시거나, Windows를 사용 중이시라면 Python 인스톨 파일 다운로드해서 설치할 수 있어요.
-[https://www.python.org/downloads/](https://www.python.org/downloads/)
-
-Anaconda 설치를 원하신다면 [여기](https://www.anaconda.com/distribution/) 에 가서 다운로드 후 설치 해주세요.
-
-#### Python 패키지 설치
-
-제 환경은 macOS Catalina와 High Sierra입니다.  
-macOS의 패키지 관리자인 Homebrew를 이용해서 파이썬 패키지를 설치하고 사용할 예정입니다.  
-Homebrew를 통해 최신 버전의 Python을 사용할 수 있습니다.
-
-> **작성자 생각**
-> Homebrew는  macOS판 yum, apt-get
-
-```
-brew install python
-```
-
-저는 3.7.7이 설치 되었네요.
-
-```
-brew list python
-/usr/local/Cellar/python/3.7.7/bin/2to3
-/usr/local/Cellar/python/3.7.7/bin/2to3-3.7
-/usr/local/Cellar/python/3.7.7/bin/easy_install-3.7
-/usr/local/Cellar/python/3.7.7/bin/idle3
-/usr/local/Cellar/python/3.7.7/bin/idle3.7
-/usr/local/Cellar/python/3.7.7/bin/pip3
-/usr/local/Cellar/python/3.7.7/bin/pip3.7
-/usr/local/Cellar/python/3.7.7/bin/pydoc3
-/usr/local/Cellar/python/3.7.7/bin/pydoc3.7
-/usr/local/Cellar/python/3.7.7/bin/python3
-/usr/local/Cellar/python/3.7.7/bin/python3-config
-/usr/local/Cellar/python/3.7.7/bin/python3.7
-/usr/local/Cellar/python/3.7.7/bin/python3.7-config
-/usr/local/Cellar/python/3.7.7/bin/python3.7m
-/usr/local/Cellar/python/3.7.7/bin/python3.7m-config
-/usr/local/Cellar/python/3.7.7/bin/pyvenv
-/usr/local/Cellar/python/3.7.7/bin/pyvenv-3.7
-/usr/local/Cellar/python/3.7.7/bin/wheel3
-/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/ (2827 files)
-/usr/local/Cellar/python/3.7.7/IDLE 3.app/Contents/ (8 files)
-/usr/local/Cellar/python/3.7.7/lib/pkgconfig/ (3 files)
-/usr/local/Cellar/python/3.7.7/libexec/bin/ (7 files)
-/usr/local/Cellar/python/3.7.7/libexec/pip/ (794 files)
-/usr/local/Cellar/python/3.7.7/libexec/setuptools/ (365 files)
-/usr/local/Cellar/python/3.7.7/libexec/wheel/ (60 files)
-/usr/local/Cellar/python/3.7.7/Python Launcher 3.app/Contents/ (16 files)
-/usr/local/Cellar/python/3.7.7/share/man/ (2 files)
-```
-
-만약, [Homebrew][homebrew]가 설치가 되지 않았다면 설치하고 Python을 설치 해주세요.
-
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-```
-
-Python 설치 고생하셨습니다.  
-이제 조금 쉬어 갈게요.
-
-[homebrew]: https://brew.sh/
-[^1]:Wikipedia Arthur Samuel, https://en.wikipedia.org/wiki/Arthur_Samuel/
