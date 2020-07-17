@@ -29,7 +29,7 @@ categories: Apache Spark 스파크 Python 분산처리 빅데이터
 
 하둡의 핵심 구성요소가 있습니다. 하둡 분산 파일 시스템HDFS, Hadoop Distributed File System과 YARN, Yet Another Resource Negotiator입니다. HDFS는 하둡의 스토리지 서브시스템이며 YARN은 하둡의 프로세싱 또는 리소스 스케줄링 서브시스템입니다.
 
-![데이터분석 인프라 구축기 (2/4). Hadoop Cluster (YARN + HDFS) | by ...](https://miro.medium.com/max/858/1*yyEkiwQGIESn9UHL8hwjWg.png)
+![](https://miro.medium.com/max/858/1*yyEkiwQGIESn9UHL8hwjWg.png)
 
 HDFS는 클러스터 하나 이상의 노드에 파일이 분산되어 있는 블록으로 구성된 가상 파일시스템입니다. 인제션이라는 프로세스는 파일시스템에 데이터를 업로드 할 때 구성된 블록의 크기에 따라 무작위로 파일을 나눕니다. 그 후에, 클러스터 노드 간에 블록을 분산 및 복제해서 내결함성을 달성하고, 데이터에 계산을 가져오는 목적으로 설계된 로컬에서 데이터를 처리할 수 있게 합니다.
 
