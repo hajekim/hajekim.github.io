@@ -9,12 +9,12 @@ categories: Kubernetes 쿠버네티스 컨테이너 Container
 
 # 쿠버네티스 클러스터 구성해보기!
 
-> *Kubernetes 특정 버전 설치 v1.15
+> *Kubernetes 특정 버전 설치 v1.15  
 > Kubernetes 마스터 노드 & 워커 노드 구성*
 
 ## OS 설정 및 패키지 설치
 
-Kubernetes 설치를 위해 CentOS와 SELinux 등 필요한 작업을 진행하도록 합니다.
+Kubernetes 설치를 위해 CentOS와 SELinux 등 필요한 작업을 진행하도록 합니다.  
 이 작업은 마스터 노드, 워커 노드 공통 작업입니다.
 
 ### Yum 업데이트
@@ -117,12 +117,12 @@ sudo lsmod | grep br_netfilter
 sudo firewall-cmd --permanent --add-port=6443/tcp && sudo firewall-cmd --permanent --add-port=10250/tcp && sudo firewall-cmd --reload
 ```
 
-> ** 참고 *
-> 포트 열지 않으면 Kubernetes 초기화 시 아래 메시지가 표시됩니다.
+> ** 참고 **
+> 포트 열지 않으면 Kubernetes 초기화 시 아래 메시지가 표시됩니다.  
 > [WARNING Firewalld]: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
-> error execution phase preflight: [preflight] Some fatal errors occurred:*
+> error execution phase preflight: [preflight] Some fatal errors occurred:
 
-필수 패키지 및 구성 설치가 완료되었습니다!
+필수 패키지 및 구성 설치가 완료되었습니다!  
 이제 Kubernetes 초기화하며 사용 할 모든 이미지를 가져와 봅시다. kubeadm이 초기화 중에 자동으로 가져옵니다. 하지만 먼저 이미지를 가져 오는 것이 좋습니다.
 
 ```jsx
@@ -146,7 +146,7 @@ sudo swapoff /dev/mapper/centos-swap
 sudo swapoff -a
 ```
 
-영구적으로 Swap 설정을 끄기 위해서는 아래 설정 파일에서 Swap 설정을 주석 처리합니다.
+영구적으로 Swap 설정을 끄기 위해서는 아래 설정 파일에서 Swap 설정을 주석 처리합니다.  
 주석은 #을 이용합니다.
 
 ```jsx
