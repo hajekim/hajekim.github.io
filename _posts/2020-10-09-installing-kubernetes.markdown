@@ -3,6 +3,10 @@ title: "Installing Kubernetes on CentOS7"
 date: 2020-10-09 18:00:00 +0900
 categories: Kubernetes 쿠버네티스 컨테이너 Container
 ---
+두 대의 CentOS 7에 Kubernetes 설치해 봅시다!
+
+---
+
 ## Installing Kubernetes on CentOS 7
 
 > *Kubernetes 특정 버전 설치 v1.15
