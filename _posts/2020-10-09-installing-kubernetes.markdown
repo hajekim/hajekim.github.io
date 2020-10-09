@@ -7,7 +7,7 @@ categories: Kubernetes 쿠버네티스 컨테이너 Container
 
 ---
 
-## 쿠버네티스 클러스터 구성해보기!
+# 쿠버네티스 클러스터 구성해보기!
 
 > *Kubernetes 특정 버전 설치 v1.15
 > Kubernetes 마스터 노드 & 워커 노드 구성*
