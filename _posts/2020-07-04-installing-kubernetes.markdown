@@ -1,0 +1,304 @@
+---
+title: "Installing Kubernetes on CentOS7"
+date: 2020-10-009 18:00:00 +0900
+categories: Kubernetes 쿠버네티스 컨테이너 Container
+---
+# Installing Kubernetes on CentOS 7
+
+> *Kubernetes 특정 버전 설치 v1.15
+> Kubernetes 마스터 노드 & 워커 노드 구성*
+
+# OS 설정 및 패키지 설치
+
+Kubernetes 설치를 위해 CentOS와 SELinux 등 필요한 작업을 진행하도록 합니다.
+이 작업은 마스터 노드, 워커 노드 공통 작업입니다.
+
+## Yum 업데이트
+
+```jsx
+sudo yum update -y
+```
+
+먼저 시스템을 업데이트한 후에 Docker, Kubernetes 설치 순으로 진행합니다.
+
+## Docker 설치
+
+```jsx
+sudo yum install -y docker
+```
+
+도커를 설치하였으니 활성화하고 실행해봅시다.
+
+```jsx
+sudo systemctl enable docker && sudo systemctl start docker
+```
+
+도커 버전을 확인해볼까요?
+
+```jsx
+sudo docker version
+```
+
+## Kubernetes 설치
+
+Kubernetes 최신 패키지를 사용하려면 Yum Repository를 구성해야 합니다. Kubernetes Yum Repo를 구성하기 위한 설정 파일을 작성합니다.
+
+```jsx
+sudo bash -c 'cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kube*
+EOF'
+```
+
+통신 문제를 방지하기 위해 SELinux를 비활성화합니다.
+
+```jsx
+sudo setenforce 0
+sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+```
+
+1.15 버전을 설치하기 위해 아래의 명령어를 입력합니다.
+
+```jsx
+sudo yum install -y --disableexcludes=kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
+```
+
+만약 최신 버전을 설치하기 위해서는 아래의 명령어를 입력합니다.
+
+```jsx
+sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+```
+
+설치가 완료되면 kubelet 서비스를 활성화 합니다.
+
+```jsx
+sudo systemctl enable kubelet && sudo systemctl start kubelet
+```
+
+## IPTables 설정
+
+```jsx
+sudo bash -c 'cat <<EOF >  /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF'
+```
+
+위에서 생성한 설정 파일을 적용 해보자
+
+```jsx
+sudo sysctl --system
+```
+
+br_netfilter 모듈 로드하기
+
+```jsx
+sudo lsmod | grep br_netfilter
+```
+
+# 마스터 노드 설정
+
+아래의 포트를 방화벽에서 오픈하도록 설정합니다.
+
+- 6443
+- 10250
+
+```jsx
+sudo firewall-cmd --permanent --add-port=6443/tcp && sudo firewall-cmd --permanent --add-port=10250/tcp && sudo firewall-cmd --reload
+```
+
+> ** 참고 *
+> 포트 열지 않으면 Kubernetes 초기화 시 아래 메시지가 표시됩니다.
+> [WARNING Firewalld]: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
+> error execution phase preflight: [preflight] Some fatal errors occurred:*
+
+필수 패키지 및 구성 설치가 완료되었습니다!
+이제 Kubernetes 초기화하며 사용 할 모든 이미지를 가져와 봅시다. kubeadm이 초기화 중에 자동으로 가져옵니다. 하지만 먼저 이미지를 가져 오는 것이 좋습니다.
+
+```jsx
+sudo kubeadm config images pull
+```
+
+모든 이미지를 가져온 후에 클러스터 설정합니다.
+
+```jsx
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+
+진행이 잘되면 다행이지만 혹시나 아래와 같이 에러메시지가 났다면, Swap 설정을 꺼줍니다. Oracle Cloud에서는 Swap 에러가 발생하네요.
+
+> *[ERROR Swap]: running with swap on is not supported. Please disable swap
+> [preflight] If you know what you are doing, you can make a check non-fatal with `-ignore-preflight-errors=...`*
+
+```jsx
+sudo blkid
+sudo swapoff /dev/mapper/centos-swap
+sudo swapoff -a
+```
+
+영구적으로 Swap 설정을 끄기 위해서는 아래 설정 파일에서 Swap 설정을 주석 처리합니다.
+주석은 #을 이용합니다.
+
+```jsx
+sudo vi /etc/fstab
+```
+
+Kubernetes 클러스터를 성공적으로 설정한 후에 아래의 출력과 유사해야 합니다. 작업자 노드와 마스터 노드를 클러스터링하기 위해서는 토큰값을 따로 기억해둡니다.
+
+```jsx
+I1009 13:21:48.839304   12082 version.go:248] remote version is much newer: v1.19.2; falling back to: stable-1.15
+[init] Using Kubernetes version: v1.15.12
+[preflight] Running pre-flight checks
+	[WARNING Firewalld]: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Activating the kubelet service
+[certs] Using certificateDir folder "/etc/kubernetes/pki"
+[certs] Generating "ca" certificate and key
+[certs] Generating "apiserver" certificate and key
+[certs] apiserver serving cert is signed for DNS names [kube01-717648 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 10.0.0.39]
+[certs] Generating "apiserver-kubelet-client" certificate and key
+[certs] Generating "front-proxy-ca" certificate and key
+[certs] Generating "front-proxy-client" certificate and key
+[certs] Generating "etcd/ca" certificate and key
+[certs] Generating "etcd/peer" certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [kube01-717648 localhost] and IPs [10.0.0.39 127.0.0.1 ::1]
+[certs] Generating "apiserver-etcd-client" certificate and key
+[certs] Generating "etcd/server" certificate and key
+[certs] etcd/server serving cert is signed for DNS names [kube01-717648 localhost] and IPs [10.0.0.39 127.0.0.1 ::1]
+[certs] Generating "etcd/healthcheck-client" certificate and key
+[certs] Generating "sa" key and public key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[apiclient] All control plane components are healthy after 15.502568 seconds
+[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+[kubelet] Creating a ConfigMap "kubelet-config-1.15" in namespace kube-system with the configuration for the kubelets in the cluster
+[upload-certs] Skipping phase. Please see --upload-certs
+[mark-control-plane] Marking the node kube01-717648 as control-plane by adding the label "node-role.kubernetes.io/master=''"
+[mark-control-plane] Marking the node kube01-717648 as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
+[bootstrap-token] Using token: b23rzg.5bcvi78bb63rbi08
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstrap-token] Creating the "cluster-info" ConfigMap in the "kube-public" namespace
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 10.0.0.39:6443 --token b23rzg.5bcvi78bb63rbi08 \
+    --discovery-token-ca-cert-hash sha256:7bd305eb247de3ee2221f43ab53ab4b79bb5ce6614e0516f07b63f565f96d372
+```
+
+Kubernetes 클러스터에 로컬로 액세스 할 수 있도록 일반 사용자에게 클러스터 설정을 추가합니다.
+
+```jsx
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+Pod에 네트워크 설정을 적용합니다.
+
+```jsx
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
+```
+
+마스터 노드 설정 끝!
+
+# 작업자 노드 설정
+
+작업자 노드를 설정하기 위해서 마스터 노드 설정 후에 kubeadm join 명령어를 그대로 복붙 해줍니다.
+
+```jsx
+kubeadm join 10.0.0.39:6443 --token b23rzg.5bcvi78bb63rbi08 \
+    --discovery-token-ca-cert-hash sha256:7bd305eb247de3ee2221f43ab53ab4b79bb5ce6614e0516f07b63f565f96d372
+```
+
+아래와 같은 결과가 출력되면 마스터 노드에 붙습니다.
+
+```jsx
+[preflight] Running pre-flight checks
+[preflight] Reading configuration from the cluster...
+[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -oyaml'
+[kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.15" ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Activating the kubelet service
+[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+
+This node has joined the cluster:
+* Certificate signing request was sent to apiserver and a response was received.
+* The Kubelet was informed of the new secure connection details.
+
+Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+```
+
+확인해보기 위해서 아래 명령어를 마스터 노드에서 확인해 봅시다!
+
+```jsx
+kubectl get nodes
+```
+
+아래 메시지처럼 나타났나요? 보이시나요?
+
+```jsx
+NAME            STATUS   ROLES    AGE     VERSION
+kube01-717648   Ready    master   28m     v1.15.5
+kube02          Ready    <none>   3m17s   v1.15.5
+```
+
+아까 Pod 구성한 것들이 클러스터에 골고루 분포가 되었나 확인해봅시다.
+
+```jsx
+kubectl get pods -A -o wide
+```
+
+아래와 같이 출력이 되면 정상!
+
+```jsx
+NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE     IP           NODE            NOMINATED NODE   READINESS GATES
+kube-system   coredns-5c98db65d4-rtx9z                1/1     Running   0          29m     10.244.0.3   kube01-717648   <none>           <none>
+kube-system   coredns-5c98db65d4-t5xsx                1/1     Running   0          29m     10.244.0.2   kube01-717648   <none>           <none>
+kube-system   etcd-kube01-717648                      1/1     Running   0          28m     10.0.0.39    kube01-717648   <none>           <none>
+kube-system   kube-apiserver-kube01-717648            1/1     Running   0          28m     10.0.0.39    kube01-717648   <none>           <none>
+kube-system   kube-controller-manager-kube01-717648   1/1     Running   0          28m     10.0.0.39    kube01-717648   <none>           <none>
+kube-system   kube-flannel-ds-amd64-cjrzc             1/1     Running   0          4m18s   10.0.0.40    kube02          <none>           <none>
+kube-system   kube-flannel-ds-amd64-d5vf8             1/1     Running   0          4m49s   10.0.0.39    kube01-717648   <none>           <none>
+kube-system   kube-proxy-c9l9w                        1/1     Running   0          4m18s   10.0.0.40    kube02          <none>           <none>
+kube-system   kube-proxy-x9wx8                        1/1     Running   0          29m     10.0.0.39    kube01-717648   <none>           <none>
+kube-system   kube-scheduler-kube01-717648            1/1     Running   0          28m     10.0.0.39    kube01-717648   <none>           <none>
+```
+
+설정 끄-읕!
