@@ -1,6 +1,6 @@
 ---
 title: "Installing Kubernetes on CentOS7"
-date: 2020-10-009 18:00:00 +0900
+date: 2020-10-09 18:00:00 +0900
 categories: Kubernetes 쿠버네티스 컨테이너 Container
 ---
 # Installing Kubernetes on CentOS 7
