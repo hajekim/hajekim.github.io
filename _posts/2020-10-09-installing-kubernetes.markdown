@@ -3,43 +3,51 @@ title: "Installing Kubernetes on CentOS7"
 date: 2020-10-09 18:00:00 +0900
 categories: Kubernetes 쿠버네티스 컨테이너 Container
 ---
-두 대의 CentOS 7에 Kubernetes 설치해 봅시다!
+### 습득 가능 스킬
+
+- 최신 버전 & 특정 버전 `Kubernetes 설치`할 수 있다.
+- 마스터 & 워커 노드를 이용하여 `Kubernetes 클러스터 구성` 할 수 있다.
+
+### 작성 환경
+
+- MacBook Pro 2019, 13-inch
+- macOS 10.15.7
+
+### 준비물
+
+- Virtual Machine 2 node (본 문서에서는 Oracle Cloud VM 사용)
+- CentOS 7
 
 ---
 
-# 쿠버네티스 클러스터 구성해보기!
+# OS 설정 및 패키지 설치
 
-> *Kubernetes 특정 버전 설치 v1.15  
-> Kubernetes 마스터 노드 & 워커 노드 구성*
-
-## OS 설정 및 패키지 설치
-
-Kubernetes 설치를 위해 CentOS와 SELinux 등 필요한 작업을 진행하도록 합니다.  
+Kubernetes 설치를 위해 CentOS와 SELinux 등 필요한 작업을 진행하도록 합니다.
 이 작업은 마스터 노드, 워커 노드 공통 작업입니다.
 
-### Yum 업데이트
+## Yum 업데이트
 
-```jsx
+```bash
 sudo yum update -y
 ```
 
-먼저 시스템을 업데이트한 후에 Docker, Kubernetes 설치 순으로 진행합니다.
+먼저 시스템을 업데이트하고 Docker, Kubernetes 순서로 설치합니다.
 
-### Docker 설치
+## Docker 설치
 
-```jsx
+```bash
 sudo yum install -y docker
 ```
 
 도커를 설치하였으니 활성화하고 실행해봅시다.
 
-```jsx
+```bash
 sudo systemctl enable docker && sudo systemctl start docker
 ```
 
 도커 버전을 확인해볼까요?
 
-```jsx
+```bash
 sudo docker version
 ```
 
@@ -47,7 +55,7 @@ sudo docker version
 
 Kubernetes 최신 패키지를 사용하려면 Yum Repository를 구성해야 합니다. Kubernetes Yum Repo를 구성하기 위한 설정 파일을 작성합니다.
 
-```jsx
+```bash
 sudo bash -c 'cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -62,32 +70,34 @@ EOF'
 
 통신 문제를 방지하기 위해 SELinux를 비활성화합니다.
 
-```jsx
+```bash
 sudo setenforce 0
 sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 ```
 
 1.15 버전을 설치하기 위해 아래의 명령어를 입력합니다.
 
-```jsx
-sudo yum install -y --disableexcludes=kubernetes kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64
+```bash
+# 1.15 특정 버전을 설치할 경우
+sudo yum install -y kubeadm-1.15.5-0.x86_64 kubectl-1.15.5-0.x86_64 kubelet-1.15.5-0.x86_64 --disableexcludes=kubernetes 
 ```
 
 만약 최신 버전을 설치하기 위해서는 아래의 명령어를 입력합니다.
 
-```jsx
+```bash
+# 최신 버전을 설치할 경우
 sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 ```
 
 설치가 완료되면 kubelet 서비스를 활성화 합니다.
 
-```jsx
+```bash
 sudo systemctl enable kubelet && sudo systemctl start kubelet
 ```
 
-### IPTables 설정
+## IPTables 설정
 
-```jsx
+```bash
 sudo bash -c 'cat <<EOF >  /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
@@ -96,42 +106,42 @@ EOF'
 
 위에서 생성한 설정 파일을 적용 해보자
 
-```jsx
+```bash
 sudo sysctl --system
 ```
 
 br_netfilter 모듈 로드하기
 
-```jsx
+```bash
 sudo lsmod | grep br_netfilter
 ```
 
-## 마스터 노드 설정
+# 마스터 노드 설정
 
 아래의 포트를 방화벽에서 오픈하도록 설정합니다.
 
 - 6443
 - 10250
 
-```jsx
+```bash
 sudo firewall-cmd --permanent --add-port=6443/tcp && sudo firewall-cmd --permanent --add-port=10250/tcp && sudo firewall-cmd --reload
 ```
 
-> ** 참고 **
-> 포트 열지 않으면 Kubernetes 초기화 시 아래 메시지가 표시됩니다.  
+> ** 참고 *
+> 포트 열지 않으면 Kubernetes 초기화 시 아래 메시지가 표시됩니다.
 > [WARNING Firewalld]: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
-> error execution phase preflight: [preflight] Some fatal errors occurred:
+> error execution phase preflight: [preflight] Some fatal errors occurred:*
 
-필수 패키지 및 구성 설치가 완료되었습니다!  
+필수 패키지 및 구성 설치가 완료되었습니다!
 이제 Kubernetes 초기화하며 사용 할 모든 이미지를 가져와 봅시다. kubeadm이 초기화 중에 자동으로 가져옵니다. 하지만 먼저 이미지를 가져 오는 것이 좋습니다.
 
-```jsx
+```bash
 sudo kubeadm config images pull
 ```
 
 모든 이미지를 가져온 후에 클러스터 설정합니다.
 
-```jsx
+```bash
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
@@ -140,22 +150,22 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 > *[ERROR Swap]: running with swap on is not supported. Please disable swap
 > [preflight] If you know what you are doing, you can make a check non-fatal with `-ignore-preflight-errors=...`*
 
-```jsx
+```bash
 sudo blkid
 sudo swapoff /dev/mapper/centos-swap
 sudo swapoff -a
 ```
 
-영구적으로 Swap 설정을 끄기 위해서는 아래 설정 파일에서 Swap 설정을 주석 처리합니다.  
+영구적으로 Swap 설정을 끄기 위해서는 아래 설정 파일에서 Swap 설정을 주석 처리합니다.
 주석은 #을 이용합니다.
 
-```jsx
+```bash
 sudo vi /etc/fstab
 ```
 
-Kubernetes 클러스터를 성공적으로 설정한 후에 아래의 출력과 유사해야 합니다. 작업자 노드와 마스터 노드를 클러스터링하기 위해서는 토큰값을 따로 기억해둡니다.
+Kubernetes 클러스터를 성공적으로 설정한 후에 아래의 출력과 유사해야 합니다. 마스터 노드와 워커 노드를 클러스터링하기 위해서는 토큰값을 포함한 조인 명령어를 따로 적어두도록 합니다.
 
-```jsx
+```bash
 I1009 13:21:48.839304   12082 version.go:248] remote version is much newer: v1.19.2; falling back to: stable-1.15
 [init] Using Kubernetes version: v1.15.12
 [preflight] Running pre-flight checks
@@ -225,9 +235,9 @@ kubeadm join 10.0.0.39:6443 --token b23rzg.5bcvi78bb63rbi08 \
     --discovery-token-ca-cert-hash sha256:7bd305eb247de3ee2221f43ab53ab4b79bb5ce6614e0516f07b63f565f96d372
 ```
 
-Kubernetes 클러스터에 로컬로 액세스 할 수 있도록 일반 사용자에게 클러스터 설정을 추가합니다.
+Kubernetes 클러스터에 로컬로 액세스 할 수 있도록, 사용할 OS 유저에 설정을 추가합니다.
 
-```jsx
+```bash
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -235,24 +245,24 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 Pod에 네트워크 설정을 적용합니다.
 
-```jsx
+```bash
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
 ```
 
-마스터 노드 설정 끝!
+마스터 노드 설정 끄-읕!
 
-## 작업자 노드 설정
+# 워커 노드 설정
 
-작업자 노드를 설정하기 위해서 마스터 노드 설정 후에 kubeadm join 명령어를 그대로 복붙 해줍니다.
+워커 노드를 설정하기 위해서 마스터 노드 설정 후에 `kubeadm join` 명령어를 그대로 복붙 해줍니다.
 
-```jsx
+```bash
 kubeadm join 10.0.0.39:6443 --token b23rzg.5bcvi78bb63rbi08 \
     --discovery-token-ca-cert-hash sha256:7bd305eb247de3ee2221f43ab53ab4b79bb5ce6614e0516f07b63f565f96d372
 ```
 
 아래와 같은 결과가 출력되면 마스터 노드에 붙습니다.
 
-```jsx
+```bash
 [preflight] Running pre-flight checks
 [preflight] Reading configuration from the cluster...
 [preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -oyaml'
@@ -271,27 +281,27 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
 확인해보기 위해서 아래 명령어를 마스터 노드에서 확인해 봅시다!
 
-```jsx
+```bash
 kubectl get nodes
 ```
 
 아래 메시지처럼 나타났나요? 보이시나요?
 
-```jsx
+```bash
 NAME            STATUS   ROLES    AGE     VERSION
 kube01-717648   Ready    master   28m     v1.15.5
 kube02          Ready    <none>   3m17s   v1.15.5
 ```
 
-아까 Pod 구성한 것들이 클러스터에 골고루 분포가 되었나 확인해봅시다.
-
-```jsx
+```bash
 kubectl get pods -A -o wide
 ```
 
+아까 Pod 구성한 것들이 클러스터에 골고루 분포가 되었나 확인해봅시다.
+
 아래와 같이 출력이 되면 정상!
 
-```jsx
+```bash
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE     IP           NODE            NOMINATED NODE   READINESS GATES
 kube-system   coredns-5c98db65d4-rtx9z                1/1     Running   0          29m     10.244.0.3   kube01-717648   <none>           <none>
 kube-system   coredns-5c98db65d4-t5xsx                1/1     Running   0          29m     10.244.0.2   kube01-717648   <none>           <none>
@@ -305,5 +315,4 @@ kube-system   kube-proxy-x9wx8                        1/1     Running   0       
 kube-system   kube-scheduler-kube01-717648            1/1     Running   0          28m     10.0.0.39    kube01-717648   <none>           <none>
 ```
 
-## 설정 끄-읕!
-
+설정 끄-읕!
