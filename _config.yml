@@ -18,11 +18,17 @@ sass:
 permalink: /posts/:title/
 texture:
   title: Haje Kim
-  tagline: Solutions Architect
+  tagline: Solutions Architect. Data Engineer
+  disqus_shortname: games
   date_format: "%b %-d, %Y"
   style: blue
-  showNav: false
+  showNav: true
   showPicker: false
+  navigation:
+    - title: My Work
+      url: "/my-work"
+    - title: Resume
+      url: "/resume"
 
   # generate social links in footer
   social_links:
@@ -35,7 +41,7 @@ texture:
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
 #header_pages:
-- about.md
+# - about.md
 
 # Build settings
 # theme: texture
