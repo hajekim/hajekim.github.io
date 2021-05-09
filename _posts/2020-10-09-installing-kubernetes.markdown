@@ -1,7 +1,8 @@
 ---
 title: "Installing Kubernetes on CentOS7"
 date: 2020-10-09 18:00:00 +0900
-categories: Kubernetes 쿠버네티스 컨테이너 Container
+categories: Container Kubernetes
+tags: [Container, Open Source, Kubernetes, K8s, Install]
 ---
 ### 습득 가능 스킬
 
