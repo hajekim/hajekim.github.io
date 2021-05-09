@@ -1,7 +1,8 @@
 ---
 title: "머신러닝 해보기: 01 시작하기 위한 준비물"
 date: 2020-04-15 18:00:00 +0900
-categories: 머신러닝 MachineLearning
+categories: 머신러닝
+tags: [Machine Learning]
 ---
 > **주의**  
 > 빠르게 변화하는 기술 트렌드를 힘겨운 분들게 작은 도움이 되고자 이 글을 작성합니다.  

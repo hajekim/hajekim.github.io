@@ -1,7 +1,8 @@
 ---
 title: "카우치베이스 Couchbase 소개"
 date: 2020-09-19 18:00:00 +0900
-categories: NoSQL 데이터베이스 디비 오픈소스 OpenSource
+categories: 데이터베이스 NoSQL
+tags: [Data, Database, NoSQL, Open Source, Couchbase]
 ---
 분산 Key-Value 데이터베이스, 카우치베이스에 알아보도록 합시다!
 
