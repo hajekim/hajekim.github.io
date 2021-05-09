@@ -25,10 +25,10 @@ texture:
   showNav: true
   showPicker: false
   navigation:
+    - title: Tech Posts
+      url: "/"
     - title: My Work
       url: "/my-work"
-    - title: Resume
-      url: "/resume"
 
   # generate social links in footer
   social_links:
