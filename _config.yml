@@ -2,7 +2,7 @@ url : "https://hajekim.github.io" # the base hostname & protocol for your site e
 
 title: hajestack
 author: Haje Kim
-email: hajekkim1@gmail.com
+email: hajekim1@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
@@ -20,7 +20,7 @@ texture:
   title: Haje Kim
   tagline: Solutions Architect
   date_format: "%b %-d, %Y"
-  style: blue
+  style: ffffff
   showNav: false
   showPicker: false
 
