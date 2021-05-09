@@ -1,0 +1,128 @@
+<blockquote>
+  <p><strong>주의</strong><br />
+빠르게 변화하는 기술 트렌드를 힘겨운 분들게 작은 도움이 되고자 이 글을 작성합니다.<br />
+솔루션 엔지니어의 머신러닝 해보기입니다.<br />
+저와 비슷한 경험 혹은 업무에 계신 분들께 도움과 재미가 되었으면 좋겠습니다.</p>
+</blockquote>
+
+<p>‘<strong>머신러닝</strong>’, 요즘 엄청나게 듣고 살고 있습니다.<br />
+일을 할 떄 회사 내에서도, 고객 업무를 하면서도, 그리고 <strong>이직</strong>(!) 할 때 면접할 때 조차 나오는 마법의 단어입니다. (맙소사)<br />
+심지어 일을 하지 않을 때에도 친구들과 대화나 뉴스에서도 종종 거론 되고 있습니다.</p>
+
+<p>몇 년 전까지만 해도 WAS, 스프링 프레임워크(Spring Framework)만 알아도 먹고 살 걱정 안했던 거 같아요.<br />
+그러다 퍼블릭 클라우드(Public Cloud)가 떠오르더니 아마존 웹 서비스(Amazon Web Services), 마이크로소프트 애저(Microsoft Azure), 구글 클라우드(Google Cloud) 같은 여러 프로바이더가 나타나고 새로운 기술이 우후죽순 나타나고 있습니다.<br />
+클라우드 플랫폼에 많은 데이터를 때려 박기(?) 시작하면서 엄청나게 쌓인 데이터를 이용해서 데이터를 분석하고자 하는 수요가 생겨났습니다. 그래서 요즘은 <strong>머신러닝, 딥러닝(Deep Learning), 인공지능</strong>이 중요하게 된 시대에 살고 있습니다.</p>
+
+<p>머신러닝은 기계학습, 딥러닝은 심층학습으로 한글로 표현하는 단어도 있지만, 저는 외국계에서 일하고 있으니까 ‘머신러닝’, ‘딥러닝’을 표현할 때 음독 그대로 사용하겠습니다. (<del>이게 뭔 개소리야</del>)</p>
+
+<hr />
+
+<h2 id="머신러닝">머신러닝</h2>
+
+<p>머신러닝에 대해서 역사를 따라가면, 아서 사무엘(Arthur Lee Samuel) 선배와 톰 미첼(Tom M. Mitchel) 교수님을 빼놓을 수 없습니다.<br />
+1959년, IBM의 아서 사무엘 선배께서 ‘머신러닝’이라는 단어를 대중화 하였습니다.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup><br />
+머신러닝 및 신경 과학 발전에 선구자적 공헌과 리더십의 카네기 멜론 대학의 톰 미첼 교수님이 계십니다.</p>
+
+<p>아서 사무엘이 정의한 머신러닝</p>
+<blockquote>
+  <p>컴퓨터가 명시적으로 프로그래밍 없이, 학습할 수 있도록 능력을 제공 하는 연구 분야</p>
+
+  <p>The field of study that gives computers the ability to learn without being explicitly programmed</p>
+</blockquote>
+
+<p>톰 미첼 교수님께서 정의한 머신러닝</p>
+
+<blockquote>
+  <p>만약 작업(T)에 대해 성능 지표(P)에 의해 측정된 성능이 경험(E)에 따라 향상되었다면, 그 컴퓨터 프로그램은 작업(T)와 성능 지표(P)에 대해 경험(E)으로부터 <strong>학습</strong>했다고 말할 수 있다.</p>
+
+  <p>A computer program is said to <strong>learn</strong> from experience <em>E</em> with respect to some class of tasks <em>T</em> and performance measure <em>P</em>, if its performance at tasks in <em>T</em>, as measured by <em>P</em>, improves with experience <em>E</em>.</p>
+</blockquote>
+
+<p>정리하면, 머신러닝은 <strong>가지고 있는 데이터의 패턴을 학습하여 궁금한 데이터를 예측하는 기술</strong>이라 볼 수 있을 듯 합니다.</p>
+
+<hr />
+
+<h2 id="시작하기-위한-준비물">시작하기 위한 준비물</h2>
+
+<h3 id="python">Python</h3>
+
+<p>머신러닝을 하기 위해서는 주로 <strong>Python</strong>과 <strong>R</strong>이 사용됩니다. 물론 Java 같은 다른 언어로도 사용이 가능합니다만, 사용자 생태계가 잘되어 있는 것이 Python이라고 생각하므로, 저는 Python을 사용해서 작성합니다.</p>
+
+<p>Python을 사용하기 위해서는 설치해야 합니다.<br />
+방법이 두 가지가 있습니다.</p>
+
+<ol>
+  <li>Python 패키지 설치</li>
+  <li>Anaconda 설치</li>
+</ol>
+
+<p>Anaconda는 Python을 포함하여 자주 사용되는 패키지가 함께 제공되는 툴입니다.</p>
+
+<p>솔루션 엔지니어의 경험으로는 ‘통합’이라는 말은 못미더우니 저는 1번 방법으로, Python을 설치하겠습니다.</p>
+
+<p>Hoxy, Homebrew가 불편하시거나, Windows를 사용 중이시라면 Python 인스톨 파일 다운로드해서 설치할 수 있어요.
+<a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+
+<p>Anaconda 설치를 원하신다면 <a href="https://www.anaconda.com/distribution/">여기</a> 에 가서 다운로드 후 설치 해주세요.</p>
+
+<h4 id="python-패키지-설치">Python 패키지 설치</h4>
+
+<p>제 환경은 macOS Catalina와 High Sierra입니다.<br />
+macOS의 패키지 관리자인 Homebrew를 이용해서 파이썬 패키지를 설치하고 사용할 예정입니다.<br />
+Homebrew를 통해 최신 버전의 Python을 사용할 수 있습니다.</p>
+
+<blockquote>
+  <p><strong>작성자 생각</strong>
+Homebrew는  macOS판 yum, apt-get</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install python
+</code></pre></div></div>
+
+<p>저는 3.7.7이 설치 되었네요.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew list python
+/usr/local/Cellar/python/3.7.7/bin/2to3
+/usr/local/Cellar/python/3.7.7/bin/2to3-3.7
+/usr/local/Cellar/python/3.7.7/bin/easy_install-3.7
+/usr/local/Cellar/python/3.7.7/bin/idle3
+/usr/local/Cellar/python/3.7.7/bin/idle3.7
+/usr/local/Cellar/python/3.7.7/bin/pip3
+/usr/local/Cellar/python/3.7.7/bin/pip3.7
+/usr/local/Cellar/python/3.7.7/bin/pydoc3
+/usr/local/Cellar/python/3.7.7/bin/pydoc3.7
+/usr/local/Cellar/python/3.7.7/bin/python3
+/usr/local/Cellar/python/3.7.7/bin/python3-config
+/usr/local/Cellar/python/3.7.7/bin/python3.7
+/usr/local/Cellar/python/3.7.7/bin/python3.7-config
+/usr/local/Cellar/python/3.7.7/bin/python3.7m
+/usr/local/Cellar/python/3.7.7/bin/python3.7m-config
+/usr/local/Cellar/python/3.7.7/bin/pyvenv
+/usr/local/Cellar/python/3.7.7/bin/pyvenv-3.7
+/usr/local/Cellar/python/3.7.7/bin/wheel3
+/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/ (2827 files)
+/usr/local/Cellar/python/3.7.7/IDLE 3.app/Contents/ (8 files)
+/usr/local/Cellar/python/3.7.7/lib/pkgconfig/ (3 files)
+/usr/local/Cellar/python/3.7.7/libexec/bin/ (7 files)
+/usr/local/Cellar/python/3.7.7/libexec/pip/ (794 files)
+/usr/local/Cellar/python/3.7.7/libexec/setuptools/ (365 files)
+/usr/local/Cellar/python/3.7.7/libexec/wheel/ (60 files)
+/usr/local/Cellar/python/3.7.7/Python Launcher 3.app/Contents/ (16 files)
+/usr/local/Cellar/python/3.7.7/share/man/ (2 files)
+</code></pre></div></div>
+
+<p>만약, <a href="https://brew.sh/">Homebrew</a>가 설치가 되지 않았다면 설치하고 Python을 설치 해주세요.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+</code></pre></div></div>
+
+<p>Python 설치 고생하셨습니다.<br />
+이제 조금 쉬어 갈게요.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Wikipedia Arthur Samuel, https://en.wikipedia.org/wiki/Arthur_Samuel/ <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
