@@ -3,15 +3,12 @@ layout: page
 title: resume
 permalink: /resume
 ---
-# 김하제, Haje Kim
-### "Deriving Business Value using Data and Cloud"
+## Haje Kim
 
-> 안녕하세요! 👋
+<h1>안녕하세요👋
 **호기심 많은 소프트웨어 엔지니어 김하제**입니다 🧑🏻‍💻
+</h1>
 10+년 간 미들웨어, 클라우드 컴퓨팅, 빅데이터 분야에서 소프트웨어 엔지니어링 경험을 쌓았어요. 주로 **데이터 웨어하우스** & **BI 플랫폼**을 즐기며 업무하고 있어요. 그 외에 컨테이너를 활용한 **애플리케이션 현대화** (Application Modernization)에 관심을 갖고 있어요!
-<!-- GS홈쇼핑에서 데이터 엔지니어로서 DW, 데이터 파이프라인, 그리고 BI를 운용하고 관리하였습니다.
-그 이전에는 한국오라클에서 Cloud Architect로 다양한 고객사에 클라우드 활용을 지원하였어요! 🧙🏻‍♀️ -->
-> 
 
 ---
 
