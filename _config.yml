@@ -3,7 +3,7 @@
 #
 
 # Site locale
-lang: "ko_KR"
+lang: "ko-KR"
 
 # Name of your site (displayed in the header)
 title: haje.log
@@ -41,9 +41,9 @@ navigation_links:
 
 # Footer icons
 footer_links:
-  - title: Feed
-    url: feed.xml
-    icon: fa fa-rss-square
+  # - title: Feed
+  #   url: feed.xml
+  #   icon: fa fa-rss-square
 
   - title: Linkedin
     url: https://linkedin.com/in/hajekim
@@ -57,7 +57,7 @@ footer_links:
 #copyright: "This site is made with <3 by *me, myself, and I*."
 
 # Time zone
-timezone: null
+timezone: Asia/Seoul
 
 # Excerpt separator
 excerpt_separator: <!--more-->
