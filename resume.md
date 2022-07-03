@@ -8,8 +8,8 @@ permalink: /resume
 
 ---
 # Work Experience
-## 구글코리아 <br/> Customer Engineer, Data Analytics | 2022.04
-## GS홈쇼핑 <br/> Data Engineer | 2021.06-2022.03
+## 구글코리아, Customer Engineer, Data Analytics <br/>  2022.04
+## GS홈쇼핑, Data Engineer <br/> 2021.06-2022.03
 
 ### Amazon SageMaker Studio 이용한 MLOps 플랫폼 구축 | 2021.12-2022.03
 - Data Scientist가 사용할 수 있도록 환경 구성
@@ -38,7 +38,7 @@ permalink: /resume
 - 데이터 스토어 아키텍처 설계 및 구축
 - [GS샵, KB국민카드·LG유플러스와 '빅데이터 동맹' 체결](http://www.econovill.com/news/articleView.html?idxno=534933)
         
-## 한국오라클 <br/> Cloud Architect | 2019.06-2021.06
+## 한국오라클, Cloud Architect <br/> 2019.06-2021.06
 ### A사 데이터 분석 플랫폼 구축 프로젝트 | 2020.12
 - 분석 플랫폼 아키텍처 설계
 - 외부 데이터 파이프라인 설계
@@ -57,7 +57,7 @@ permalink: /resume
 - 구축 기술 지원
 ### 고객 대상 핸즈온 및 웨비나 진행 | 2019-2021
 - 오라클 자율운영 데이터 분석 및 관리 핸즈온 세미나
-## 락플레이스 <br/> Solutions Architect | 2017.09-2019.06
+## 락플레이스, Solutions Architect <br/>  2017.09-2019.06
 ### MSP 클라우드 대시보드 MSA 마이그레이션 프로젝트 | 2018.06-2019.01
 - GCP를 활용한 Kubernetes, Repository, Monitoring 이용 아키텍처 설계 및 구축
 - 애플리케이션 디버깅 및 배포 기술 지원
@@ -73,7 +73,7 @@ permalink: /resume
 - [GitHub - hajekim/BigQuery-ML-Presentation: Google BigData Showcase Season 8의 "Machine Learning : 엔드게임, BigQuery의 진화" 발표에서 사용한 튜토리얼을 공개합니다.](https://github.com/hajekim/BigQuery-ML-Presentation)
 - 구글 클라우드 빅데이터 쇼케이스 시즌 4 2018.03
 
-## 유클릭 <br/> Solutions Engineer | 2013.02-2017.08
+## 유클릭, Solutions Engineer <br/> 2013.02-2017.08
 ### A사 면세점 구축 프로젝트 | 2016.01-2016.07
 - 미들웨어 솔루션 구축 및 기술 지원
     - Oracle WebLogic Server
@@ -92,7 +92,7 @@ permalink: /resume
 
 ### 다수 기업 및 금융권 유지보수 및 기술 지원 | 2013-2017
 
-## 지란지교소프트 <br/> Intern Web Developer | 2012.05-2012.10
+## 지란지교소프트, Intern Web Developer <br/> 2012.05-2012.10
 ### 그룹웨어 구축 프로젝트 | 2012.05-2012.10
 - Sencha Touch, Classic ASP 활용
 
