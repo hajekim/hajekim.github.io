@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Me
-permalink: /me
+title: resume
+permalink: /resume
 ---
 # 김하제, Haje Kim
 ### "Deriving Business Value using Data and Cloud"
