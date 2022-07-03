@@ -8,29 +8,13 @@ permalink: /resume
 
 ---
 
-### 🔎 한 눈에 보기
-
-**🧑🏻‍💻 현재**
-
-<!-- - **구글코리아** Customer Engineer 2022-
-
-🛤 **지난 경험**
-
+# Work Experience
+- **구글코리아** Customer Engineer 2022-
 - **GS홈쇼핑** Data Engineer 2021-2022
 - **한국오라클** Cloud Architect 2019-2021
 - **락플레이스** Solutions Architect 2017-2019
 - **유클릭** Solutions Engineer 2013-2017
-- **지란지교소프트** Web Developer(인턴) 2012/05-10 -->
-
-🥳 **저는 이런 사람이에요**
-
-- 호기심이 많아요
-- 새로운 기술 공부하기 좋아해요
-- ☁️ Cloud Computing 선호
-- 🐳 Container
-- 🐘 Hadoop ⭐️ Spark with Airflow
-- 🤖 MLOps 재밌어요
-- 기술 발표하거나 대화하는거 좋아해요
+- **지란지교소프트** Web Developer(인턴) 2012/05-10
 
 ---
 
