@@ -57,6 +57,7 @@ permalink: /resume
 - 구축 기술 지원
 ### 고객 대상 핸즈온 및 웨비나 진행 | 2019-2021
 - 오라클 자율운영 데이터 분석 및 관리 핸즈온 세미나
+
 ## 락플레이스, Solutions Architect <br/>  2017.09-2019.06
 ### MSP 클라우드 대시보드 MSA 마이그레이션 프로젝트 | 2018.06-2019.01
 - GCP를 활용한 Kubernetes, Repository, Monitoring 이용 아키텍처 설계 및 구축
