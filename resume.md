@@ -8,26 +8,25 @@ permalink: /resume
 10+년 간 미들웨어, 클라우드 컴퓨팅, 빅데이터 분야에서 소프트웨어 엔지니어링 경험을 쌓았어요. 주로 **데이터 웨어하우스** & **BI 플랫폼**을 즐기며 업무하고 있어요. 그 외에 컨테이너를 활용한 **애플리케이션 현대화** (Application Modernization)에 관심을 갖고 있어요!
 
 ---
+# Work Experience
 <style>
-td, th {
-   border: none!important;
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+   border: 1px solid black;
+}
+blockquote {
+    border-left: solid blue;
+    padding-left: 10px;
 }
 </style>
-
-
-| Time         | Length        |
-| ------------ | ------------- |
-| -Millisecond | Millimetre    |
-| Second       | Centimetre    |
-| Minute       | Inch          |
-
-# Work Experience
-| **구글코리아** <br/> Customer Engineer, 2022- | ddd |
-| GS홈쇼핑 | Data Engineer 2021-2022 |
-| 한국오라클 | Cloud Architect 2019-2021 |
-| 락플레이스 | Solutions Architect 2017-2019 |
-| 유클릭 | Solutions Engineer 2013-2017 |
-| 지란지교소프트 |         Web Developer(인턴) 2012/05-10 |
+| **구글코리아**<br>Customer Engineer, 2022-             | ddddddddd |
+|--------------------------------------------------------|-----------|
+| **GS홈쇼핑**<br>Data Engineer, 2021.06-2022.03         |           |
+| **한국오라클**<br>Cloud Architect, 2019.06-2021.06     |           |
+| **락플레이스**<br>Solutions Architect, 2017.09-2019.06 |           |
+| **유클릭**<br>Solutions Engineer, 2013.02-2017.06      |           |
 
 ---
 
