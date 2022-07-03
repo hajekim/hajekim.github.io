@@ -3,16 +3,13 @@ layout: page
 title: resume
 permalink: /resume
 ---
-# 안녕하세요👋  
-# 호기심 많은 소프트웨어 엔지니어 김하제입니다 🧑🏻‍💻
+# 안녕하세요👋 <br/> 호기심 많은 소프트웨어 엔지니어 김하제입니다 🧑🏻‍💻
 10+년 간 미들웨어, 클라우드 컴퓨팅, 빅데이터 분야에서 소프트웨어 엔지니어링 경험을 쌓았어요. 주로 **데이터 웨어하우스** & **BI 플랫폼**을 즐기며 업무하고 있어요. 그 외에 컨테이너를 활용한 **애플리케이션 현대화** (Application Modernization)에 관심을 갖고 있어요!
 
 ---
 # Work Experience
-## 구글코리아
-### Customer Engineer, Data Analytics | 2022/04
-## GS홈쇼핑
-### Data Engineer | 2021/06-2022/03
+## 구글코리아 <br/> Customer Engineer, Data Analytics | 2022/04
+## GS홈쇼핑 <br/> Data Engineer | 2021/06-2022/03
 - **Amazon SageMaker Studio 이용한 MLOps 플랫폼 구축** 2021/12 -
     - Data Scientist가 사용할 수 있도록 환경 구성
     - SageMaker Pipelines으로 ML서빙 파이프라인 구축
