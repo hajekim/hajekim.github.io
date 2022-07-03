@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about
+title: Me
+permalink: /me
 ---
 
 Hi, Write an awesome description about your blog here.  
