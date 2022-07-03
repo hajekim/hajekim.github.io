@@ -10,12 +10,15 @@ permalink: /resume
 # Work Experience
 ### 구글코리아 <br/> Customer Engineer, Data Analytics | 2022.04
 ### GS홈쇼핑 <br/> Data Engineer | 2021.06-2022.03
+
 #### Amazon SageMaker Studio 이용한 MLOps 플랫폼 구축 | 2021.12-2022.03
 - Data Scientist가 사용할 수 있도록 환경 구성
 - SageMaker Pipelines으로 ML서빙 파이프라인 구축
+
 #### 데이터 파이프라인 운영 및 관리 | 2021.10-2022.03
 - Airflow를 통한 PySpark Job 파이프라인 운용 및 관리
 - Data ETL from Oracle Exadata to S3, GCS and BigQuery
+
 #### 전사 BI 플랫폼 운영 및 관리 |  2021.10-2022.03
 - GCP에서 MicroStrategy 운용
     - HTTPS Load Balancer
@@ -23,17 +26,17 @@ permalink: /resume
     - CloudSQL
         - GCE에 호스팅 하던 MySQL에서 CloudSQL로 데이터 마이그레이션
     - BI 대시보드 데이터 BigQuery에 질의
+
 #### MLOps PoC with Google Vertex AI | 2021.08-2021.10
 - Kubeflow 및 Google Vertex AI 활용
 - [Google Vertex AI로 신용카드 이상탐지 AutoML 모델 만들기 1/2편](https://velog.io/@haje/Vertex-AI-AutoML-%EC%82%AC%EA%B8%B0-%ED%83%90%EC%A7%80-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95)
     
-- **Data Alliance 프로젝트** 2021.06 -
-    - 기획자로서 진행
-    - 협업사 간 데이터 분석 및 모델링
-    - 데이터 파이프라인 및 워크플로우 구축
-    - 데이터 스토어 아키텍처 설계 및 구축
-    
-    [GS샵, KB국민카드·LG유플러스와 '빅데이터 동맹' 체결](http://www.econovill.com/news/articleView.html?idxno=534933)
+#### Data Alliance 프로젝트 | 2021.06-2022.03
+- 기획자로서 진행
+- 협업사 간 데이터 분석 및 모델링
+- 데이터 파이프라인 및 워크플로우 구축
+- 데이터 스토어 아키텍처 설계 및 구축
+- [GS샵, KB국민카드·LG유플러스와 '빅데이터 동맹' 체결](http://www.econovill.com/news/articleView.html?idxno=534933)
         
 ### 한국오라클 <br/> Cloud Architect | 2019.06-2021.06
 - **A사 데이터 분석 플랫폼 구축 프로젝트** 2020.12-
