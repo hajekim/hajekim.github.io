@@ -8,8 +8,8 @@ permalink: /resume
 
 ---
 # Work Experience
-## 구글코리아 <br/> Customer Engineer, Data Analytics | 2022/04
-## GS홈쇼핑 <br/> Data Engineer | 2021/06-2022/03
+### 구글코리아 <br/> Customer Engineer, Data Analytics | 2022/04
+### GS홈쇼핑 <br/> Data Engineer | 2021/06-2022/03
 - **Amazon SageMaker Studio 이용한 MLOps 플랫폼 구축** 2021/12 -
     - Data Scientist가 사용할 수 있도록 환경 구성
     - SageMaker Pipelines으로 ML서빙 파이프라인 구축
