@@ -32,7 +32,6 @@ texture:
 
   # generate social links in footer
   social_links:
-    twitter: haje_kim
     github:  hajekim
     linkedIn: in/hajekim
     rss: rss
