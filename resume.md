@@ -74,25 +74,27 @@ permalink: /resume
 - 구글 클라우드 빅데이터 쇼케이스 시즌 4 2018.03
 
 ## 유클릭 <br/> Solutions Engineer | 2013.02-2017.08
-- **A사 면세점 구축 프로젝트** 2016.01-2016.07
-    - 미들웨어 솔루션 구축 및 기술 지원
-        - Oracle WebLogic Server
-        - Apache HTTP Server
-    - Oracle Database 연동 기술 지원
-        - RAC 성능 테스트 이슈 트러블슈팅
-    - 스트레스 테스트 기술 지원
-        - JVM 튜닝
-- **통신사 포탈 고도화 프로젝트** 2016.11-2017.03
-    - Java, WAS 버전 업그레이드 및 마이그레이션
-        - Oracle WebLogic Server
-        - Oracle WebCenter Portal
-    - 신규 애플리케이션 배포 및 장애 기술 지원
-    - 성능 테스트 기술 지원
+### A사 면세점 구축 프로젝트 | 2016.01-2016.07
+- 미들웨어 솔루션 구축 및 기술 지원
+    - Oracle WebLogic Server
+    - Apache HTTP Server
+- Oracle Database 연동 기술 지원
+    - RAC 성능 테스트 이슈 트러블슈팅
+- 스트레스 테스트 기술 지원
     - JVM 튜닝
-- **다수 기업 및 금융권 유지보수 및 기술 지원** 2013-2017
-### 지란지교소프트 <br/> Intern Web Developer | 2012.05-2012.10
-- **그룹웨어 구축 프로젝트** 2012.05-2012.10
-    - Sencha Touch, Classic ASP 활용
+### 통신사 포탈 고도화 프로젝트 | 2016.11-2017.03
+- Java, WAS 버전 업그레이드 및 마이그레이션
+    - Oracle WebLogic Server
+    - Oracle WebCenter Portal
+- 신규 애플리케이션 배포 및 장애 기술 지원
+- 성능 테스트 기술 지원
+- JVM 튜닝
+
+### 다수 기업 및 금융권 유지보수 및 기술 지원 | 2013-2017
+
+## 지란지교소프트 <br/> Intern Web Developer | 2012.05-2012.10
+### 그룹웨어 구축 프로젝트 | 2012.05-2012.10
+- Sencha Touch, Classic ASP 활용
 
 ---
 
