@@ -22,10 +22,10 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/image/favicon.ico">
     <link rel="icon" type="image/x-icon" href="/assets/image/favicon.ico">
-    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#0d1117">
     <meta name="msapplication-TileImage" content="/assets/image/favicon-144x144.png">
     <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#0d1117">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print" onload="this.media='all'"/>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'"/>
@@ -114,15 +114,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script>
-      function addDarkmodeWidget() {
-        new Darkmode().showWidget();
-        window.addEventListener('load', addDarkmodeWidget);
-      }
-      const options = {
-        label: '🌓',
-      }
-      const darkmode = new Darkmode(options);
-            darkmode.showWidget();
+      const darkmode = new Darkmode({ label: '🌓' });
+      darkmode.showWidget();
     </script>
 
   </body>
