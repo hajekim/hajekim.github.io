@@ -1,6 +1,6 @@
 ---
-layout: page
-title: resume
+layout: resume
+title: Resume
 permalink: /resume
 ---
 # 안녕하세요👋 <br/> 호기심 많은 소프트웨어 엔지니어 김하제입니다 🧑🏻‍💻
@@ -117,6 +117,21 @@ permalink: /resume
 
 # Tech Stack 🥞
 
-
+<div class="tech-stack">
+  <span class="tech-badge">GCP</span>
+  <span class="tech-badge">BigQuery</span>
+  <span class="tech-badge">Looker</span>
+  <span class="tech-badge">Vertex AI</span>
+  <span class="tech-badge">Kubernetes</span>
+  <span class="tech-badge">Airflow</span>
+  <span class="tech-badge">PySpark</span>
+  <span class="tech-badge">dbt</span>
+  <span class="tech-badge">AWS</span>
+  <span class="tech-badge">OCI</span>
+  <span class="tech-badge">Docker</span>
+  <span class="tech-badge">Python</span>
+  <span class="tech-badge">SQL</span>
+  <span class="tech-badge">Oracle WebLogic</span>
+</div>
 
 ---
