@@ -2,25 +2,38 @@
 layout: default
 ---
 
+{% include profile-card.html %}
+
 <div class="posts">
   {% for post in paginator.posts %}
   <article class="post">
 
-    <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+    <h1 class="{% if forloop.first %}post-title--latest{% endif %}">
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    </h1>
+
+    <div class="date">
+      {{ post.date | date: "%Y.%m.%d" }}
+      &nbsp;·&nbsp;
+      {% include read-time.html content=post.content %}
+    </div>
 
     <div class="entry">
       {% if post.content contains '<!--more-->' %}
-
       {{ post.excerpt }}
-
       {% else %}
-
       {{ post.excerpt | markdownify | strip_html | truncate: 160 }}
-
       {% endif %}
     </div>
 
-    <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read more&nbsp;&#183;{% include read-time.html content=post.content %}</a>
+    {% if post.categories.size > 0 %}
+    <div class="post-tags">
+      {% for category in post.categories %}
+      <a class="tag-badge" href="{{ site.baseurl }}/categories/#{{ category | slugize }}">{{ category }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
   </article>
   {% endfor %}
 
