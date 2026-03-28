@@ -10,6 +10,12 @@ permalink: /resume
 # Work Experience
 ## 구글클라우드코리아, Customer Engineer, Data Analytics <br/>  2022.04
 
+### Agentic Design Patterns — Gemini CLI Extension | 2026.03
+- 28개 AI 에이전트 디자인 패턴을 Gemini CLI Extension으로 패키징
+- 슬래시 커맨드(`/gen-skeleton`, `/pattern-summary`), 서브에이전트(`@architect`, `@reviewer`), MCP 서버 포함
+- 영어·한국어·일본어·중국어 1,376개 트리거 문구 지원
+- [포스트 보기](/2026/03/28/agentic-design-patterns-extension/)
+
 ## GS홈쇼핑, Data Engineer <br/> 2021.06-2022.03
 
 ### Amazon SageMaker Studio 이용한 MLOps 플랫폼 구축 | 2021.12-2022.03
