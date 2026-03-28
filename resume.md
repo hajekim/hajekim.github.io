@@ -4,7 +4,7 @@ title: Resume
 permalink: /resume
 ---
 # 안녕하세요👋 <br/> 호기심 많은 소프트웨어 엔지니어 김하제입니다 🧑🏻‍💻
-10+년간 미들웨어, 클라우드 컴퓨팅, 빅데이터 경험을 쌓았어요. 주로 클라우드 컴퓨팅에서 AI에이전트, LLM, 데이터 웨어하우스, 데이터 파이프라인 등의 업무를 하고 있어요.
+13+년간 미들웨어, 클라우드 컴퓨팅, 빅데이터 경험을 쌓았어요. 현재 구글 클라우드 코리아에서 Customer Engineer로 일하며, AI 에이전트, LLM, 데이터 웨어하우스, 데이터 파이프라인 등의 업무를 하고 있어요.
 
 ---
 # Work Experience
@@ -141,20 +141,13 @@ permalink: /resume
 # Tech Stack 🥞
 
 <div class="tech-stack">
-  <span class="tech-badge">GCP</span>
+  <span class="tech-badge">Google Cloud</span>
+  <span class="tech-badge">Gemini</span>
   <span class="tech-badge">BigQuery</span>
-  <span class="tech-badge">Looker</span>
   <span class="tech-badge">Vertex AI</span>
   <span class="tech-badge">Kubernetes</span>
   <span class="tech-badge">Airflow</span>
-  <span class="tech-badge">PySpark</span>
-  <span class="tech-badge">dbt</span>
   <span class="tech-badge">AWS</span>
-  <span class="tech-badge">OCI</span>
-  <span class="tech-badge">Docker</span>
-  <span class="tech-badge">Python</span>
-  <span class="tech-badge">SQL</span>
-  <span class="tech-badge">Oracle WebLogic</span>
 </div>
 
 ---

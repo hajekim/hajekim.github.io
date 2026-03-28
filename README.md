@@ -6,7 +6,7 @@ Personal blog of Haje Kim — Cloud & Data Engineer.
 
 ## About
 
-10년+ 경력의 Cloud & Data Engineer. GCP, BigQuery, Kubernetes, Airflow, PySpark를 주로 다룹니다.
+13년+ 경력의 Cloud & Data Engineer. Google Cloud Korea에서 Customer Engineer로 Gemini·BigQuery·Kubernetes·Airflow를 다루고 있습니다.
 
 주제: AI/ML, Google Cloud, 데이터 엔지니어링, 아키텍처
 
