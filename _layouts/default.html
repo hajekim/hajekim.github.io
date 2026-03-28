@@ -52,6 +52,14 @@
       </div>
     </div>
 
+    {% if page.url == "/" %}
+    <div class="wrapper-profile">
+      <div class="container">
+        {% include profile-card.html %}
+      </div>
+    </div>
+    {% endif %}
+
     <div id="main" role="main" class="container">
       {{ content }}
     </div>

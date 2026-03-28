@@ -411,7 +411,7 @@ a[href^="#fnref:"] {
 //
 
 .wrapper-masthead {
-  margin-bottom: auto;
+  margin-bottom: 0;
   background-color: $bg-secondary;
 }
 
@@ -646,13 +646,20 @@ footer {
   }
 }
 
+// Profile wrapper — same bg as masthead, sits between nav and content
+.wrapper-profile {
+  background-color: $bg-secondary;
+  border-bottom: 01px solid $border;
+  margin-bottom: 0;
+}
+
 // Profile Card (homepage)
 .profile-card {
-  background-color: $bg-secondary;
-  border: 01px solid $border;
-  border-radius: 06px;
-  padding: 20px;
-  margin-bottom: 30px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 24px 0;
+  margin-bottom: 0;
 }
 
 .profile-card-inner {
