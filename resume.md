@@ -10,11 +10,28 @@ permalink: /resume
 # Work Experience
 ## 구글클라우드코리아, Customer Engineer, Data Analytics <br/>  2022.04
 
+### 디지털 네이티브 / 게임 고객사 기술 지원
+- BigQuery, Vertex AI 기반 데이터 분석 아키텍처 제안 및 PoC 지원
+- Gemini 기반 에이전트 아키텍처 제안 및 지원
+- 고객사 데이터 워크로드 GCP 마이그레이션 기술 지원
+- 고객 대상 핸즈온 워크샵 및 기술 세미나 진행
+
 ### Agentic Design Patterns — Gemini CLI Extension | 2026.03
 - 28개 AI 에이전트 디자인 패턴을 Gemini CLI Extension으로 패키징
 - 슬래시 커맨드(`/gen-skeleton`, `/pattern-summary`), 서브에이전트(`@architect`, `@reviewer`), MCP 서버 포함
 - 영어·한국어·일본어·중국어 1,376개 트리거 문구 지원
+- [geminicli.com 갤러리 등재](https://geminicli.com/extensions/?name=hajekimagentic-design-patterns-extension)
 - [포스트 보기](/2026/03/28/agentic-design-patterns-extension/)
+
+### 미상공회의소(AmCham Korea) 발표 | 2026.01
+- "AI-augmented Workforce" 주제 발표
+- [이벤트 보기](https://www.amchamkorea.org/events/recent_events/read/?idx=1773)
+
+### 한국방송기술인연합회(KOBETA) 클라우드 아키텍처 설계 강의 | 2023.06
+- 지상파 방송사 기술인 대상 강의 (2시간)
+- 비즈니스를 위한 구글 클라우드 빅데이터 플랫폼 — 데이터 수집·분석·ML
+- 생성형 AI(GenAI/LLM) 및 벡터 유사도 검색 기반 추천/검색 구축
+- [교육 안내](http://edu.kobeta.com/education/index-list.php?idx=183&code=all&bgu=view)
 
 ## GS홈쇼핑, Data Engineer <br/> 2021.06-2022.03
 
