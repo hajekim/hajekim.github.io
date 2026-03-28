@@ -418,7 +418,7 @@ a[href^="#fnref:"] {
 .masthead {
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  padding: 12px 0;
   border-bottom: 01px solid $border;
   background-color: $bg-secondary;
 
@@ -428,81 +428,122 @@ a[href^="#fnref:"] {
   }
 }
 
-.masthead--home {
-  align-items: flex-start;
-  padding: 24px 0;
-
-  @include mobile {
-    display: block;
-    text-align: center;
-  }
+// Sidebar layout — full viewport width, sidebar left-anchored
+.wrapper-main {
+  padding-top: 0;
 }
 
-.masthead-left {
+.layout-sidebar {
   display: flex;
-  flex: 1;
-  gap: 16px;
+  gap: 0;
   align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
 
   @include mobile {
     flex-direction: column;
-    align-items: center;
   }
 }
 
-.site-avatar {
-  width: 70px;
-  height: 70px;
-  margin-right: 15px;
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 32px 24px 32px 32px;
+  border-right: 01px solid $border;
+  min-height: calc(100vh - 45px);
 
   @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
+    width: 100%;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 01px solid $border;
+    padding: 24px 16px;
+    text-align: center;
   }
 
-  img {
-    border-radius: 03px;
+  .site-avatar {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0 0 14px;
+
+    @include mobile {
+      margin: 0 auto 14px;
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 02px solid $border;
+    }
+  }
+
+  .profile-bio {
+    font-size: 13px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .profile-links {
+    margin-bottom: 14px;
+  }
+
+  .profile-stack {
+    gap: 6px;
   }
 }
 
-.site-info {
+.sidebar-info {
+  margin-bottom: 12px;
+}
+
+.sidebar-name {
+  margin: 0 0 04px !important;
+  font-size: 18px !important;
+  font-weight: 600;
+  color: $text-heading;
+  font-family: $sans-font-family;
+
+  a {
+    color: $text-heading;
+    text-decoration: none;
+    &:hover { color: $accent-light !important; }
+    &:visited { color: $text-heading; }
+  }
+}
+
+.sidebar-description {
+  margin: 0 !important;
+  font-size: 13px !important;
+  color: $text-muted;
+}
+
+.main-content {
   flex: 1;
-  align-self: flex-start;
-
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
-  }
+  min-width: 0;
+  padding: 32px 40px;
 }
 
+// .site-name is used in the slim masthead (top nav bar)
 .site-name {
   margin: 0;
   color: $text-heading;
   font-family: $sans-font-family;
-  font-weight: 300;
-  font-size: 28px !important;
+  font-weight: 500;
+  font-size: 18px !important;
   letter-spacing: 01px;
+  flex: 1;
 
   a {
+    color: $text-heading;
+    text-decoration: none;
     &:hover {
-      color: $mahogany !important;
-      text-decoration: none;
+      color: $accent-light !important;
     }
     &:visited {
       color: inherit;
     }
-  }
-}
-
-.site-description {
-  margin: -05px 0 0 0;
-  color: $text-muted;
-  font-size: 16px !important;
-
-  @include mobile {
-    margin: 03px 0;
   }
 }
 

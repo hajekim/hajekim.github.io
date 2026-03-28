@@ -35,16 +35,11 @@
   </head>
 
   <body>
+    <!-- Slim top navigation bar -->
     <div class="wrapper-masthead">
       <div class="container">
         <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" width="70" height="70" /></a>
-
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
-
+          <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
           <nav class="nav-menu">
             {% include navigation.html %}
           </nav>
@@ -52,16 +47,42 @@
       </div>
     </div>
 
-    {% if page.url == "/" %}
-    <div class="wrapper-profile">
-      <div class="container">
-        {% include profile-card.html %}
-      </div>
-    </div>
-    {% endif %}
+    <!-- Sidebar layout -->
+    <div class="wrapper-main layout-sidebar">
 
-    <div id="main" role="main" class="container">
-      {{ content }}
+        <!-- Left sidebar: profile -->
+        <aside class="sidebar">
+          <a href="{{ site.baseurl }}/" class="site-avatar">
+            <img src="{{ site.avatar }}" width="80" height="80" alt="{{ site.title }}" />
+          </a>
+          <div class="sidebar-info">
+            <p class="sidebar-name"><a href="{{ site.baseurl }}/">{{ site.title }}</a></p>
+            <p class="sidebar-description">{{ site.description }}</p>
+          </div>
+          {% if site.bio %}<p class="profile-bio">{{ site.bio }}</p>{% endif %}
+          <div class="profile-links">
+            {% for link in site.footer_links %}
+            {% if link.url contains "://" %}{% assign url = link.url %}{% else %}{% assign url = link.url | relative_url %}{% endif %}
+            <a class="profile-link-btn" href="{{ url }}" title="{{ link.title }}">
+              <i class="{{ link.icon | default: 'fa fa-link' }}"></i>&nbsp;{{ link.title }}
+            </a>
+            {% endfor %}
+          </div>
+          <div class="profile-stack">
+            <span class="stack-badge">GCP</span>
+            <span class="stack-badge">BigQuery</span>
+            <span class="stack-badge">Kubernetes</span>
+            <span class="stack-badge">Airflow</span>
+            <span class="stack-badge">PySpark</span>
+            <span class="stack-badge">Looker</span>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <main id="main" role="main" class="main-content">
+          {{ content }}
+        </main>
+
     </div>
 
     <div class="wrapper-footer">
