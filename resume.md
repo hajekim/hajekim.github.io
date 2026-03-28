@@ -3,7 +3,7 @@ layout: resume
 title: Resume
 permalink: /resume
 ---
-<img src="/assets/image/egg_daisy.png" alt="profile" width="150" />
+<img src="/assets/image/egg_daisy.png" alt="profile" width="150" style="border-radius: 12px;" />
 
 # 안녕하세요👋 <br/> 호기심 많은 소프트웨어 엔지니어 김하제입니다 🧑🏻‍💻
 13+년간 미들웨어, 클라우드 컴퓨팅, 빅데이터 경험을 쌓았어요. 현재 구글 클라우드 코리아에서 Customer Engineer로 일하며, AI 에이전트, LLM, 데이터 웨어하우스, 데이터 파이프라인 등의 업무를 하고 있어요.
