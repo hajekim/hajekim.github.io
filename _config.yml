@@ -69,6 +69,22 @@ excerpt_separator: <!--more-->
 
 permalink: pretty
 
+# jekyll-compose defaults
+jekyll_compose:
+  default_front_matter:
+    posts:
+      description: ""
+      categories: ""
+      tags: []
+
+# Default layouts
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
 # Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
   # Use GitHub flavored markdown, including triple backtick fenced code blocks

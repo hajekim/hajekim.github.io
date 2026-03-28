@@ -4,11 +4,11 @@ title: Resume
 permalink: /resume
 ---
 # 안녕하세요👋 <br/> 호기심 많은 소프트웨어 엔지니어 김하제입니다 🧑🏻‍💻
-10+년간 미들웨어, 클라우드 컴퓨팅, 빅데이터 경험을 쌓았어요. 주로 클라우드 컴퓨팅에서 데이터 웨어하우스, BI와 데이터 파이프라인 등 데이터 엔지니어링 업무를 하고 있어요.
+10+년간 미들웨어, 클라우드 컴퓨팅, 빅데이터 경험을 쌓았어요. 주로 클라우드 컴퓨팅에서 AI에이전트, LLM, 데이터 웨어하우스, 데이터 파이프라인 등의 업무를 하고 있어요.
 
 ---
 # Work Experience
-## 구글코리아, Customer Engineer, Data Analytics <br/>  2022.04
+## 구글클라우드코리아, Customer Engineer, Data Analytics <br/>  2022.04
 
 ## GS홈쇼핑, Data Engineer <br/> 2021.06-2022.03
 
@@ -30,7 +30,7 @@ permalink: /resume
 
 ### MLOps PoC with Google Vertex AI | 2021.08-2021.10
 - Kubeflow 및 Google Vertex AI 활용
-- [Google Vertex AI로 신용카드 이상탐지 AutoML 모델 만들기 1/2편](https://velog.io/@haje/Vertex-AI-AutoML-%EC%82%AC%EA%B8%B0-%ED%83%90%EC%A7%80-%EB%AA%A8%EB%8D%B8-%EA%B5%AC%EC%B6%95)
+- [Google Vertex AI로 신용카드 이상탐지 AutoML 모델 만들기 1/2편](/2021/07/26/post/)
     
 ### Data Alliance 프로젝트 | 2021.06-2022.03
 - 기획자로서 진행
