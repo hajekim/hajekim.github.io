@@ -523,6 +523,12 @@ a[href^="#fnref:"] {
   flex: 1;
   min-width: 0;
   padding: 32px 40px;
+
+  @include mobile {
+    padding: 20px 16px;
+    width: 100%;
+    overflow-x: auto;
+  }
 }
 
 // .site-name is used in the slim masthead (top nav bar)
