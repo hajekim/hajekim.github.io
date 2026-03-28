@@ -174,6 +174,12 @@ Run `/gen-skeleton planning` to generate the code skeleton.
 
 Extension이 설치되면 `mcp_server.py`가 자동으로 MCP 서버로 등록됩니다. 모델이 직접 패턴을 검색하고 스킬 내용을 가져올 수 있으며, 대화 중 자연스럽게 호출됩니다.
 
+| 도구 | 설명 |
+|------|------|
+| `list_patterns([category])` | 28개 패턴 목록 반환. 카테고리 필터 가능 (`core` / `state` / `reliability` / `advanced` / `appendix`) |
+| `get_skill(pattern_name)` | 패턴 이름으로 `SKILL.md` 전체 내용 조회. 오타 시 유사 패턴 제안 |
+| `search_skills(query)` | 키워드로 전체 28개 스킬을 검색, 매칭된 라인과 패턴 반환 |
+
 ### `list_patterns` — 패턴 목록 조회
 
 카테고리 없이 호출하면 28개 전체 목록을, 카테고리를 지정하면 해당 카테고리만 반환합니다.
