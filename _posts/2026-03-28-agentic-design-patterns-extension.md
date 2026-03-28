@@ -172,15 +172,77 @@ Run `/gen-skeleton planning` to generate the code skeleton.
 
 ## MCP 서버 (스킬 검색)
 
-Extension이 설치되면 `mcp_server.py`가 자동으로 MCP 서버로 등록됩니다. 모델이 직접 패턴을 검색하고 스킬 내용을 가져올 수 있습니다.
+Extension이 설치되면 `mcp_server.py`가 자동으로 MCP 서버로 등록됩니다. 모델이 직접 패턴을 검색하고 스킬 내용을 가져올 수 있으며, 대화 중 자연스럽게 호출됩니다.
 
-**제공 도구 3가지:**
+### `list_patterns` — 패턴 목록 조회
 
-| 도구 | 설명 |
-|------|------|
-| `list_patterns([category])` | 28개 패턴 목록 반환. 카테고리 필터 가능 (`core` / `state` / `reliability` / `advanced` / `appendix`) |
-| `get_skill(pattern_name)` | 패턴 이름으로 `SKILL.md` 전체 내용 조회. 오타 시 유사 패턴 제안 |
-| `search_skills(query)` | 키워드로 전체 28개 스킬을 검색, 매칭된 라인과 패턴 반환 |
+카테고리 없이 호출하면 28개 전체 목록을, 카테고리를 지정하면 해당 카테고리만 반환합니다.
+
+```
+# 전체 28개 목록 (카테고리별 그룹)
+list_patterns()
+
+# 특정 카테고리만
+list_patterns("core")       → Core 7개 패턴
+list_patterns("state")      → State Management 4개 패턴
+list_patterns("reliability") → Reliability 3개 패턴
+list_patterns("advanced")   → Advanced 7개 패턴
+list_patterns("appendix")   → Appendix 7개 패턴
+```
+
+잘못된 카테고리를 입력하면 유효한 카테고리 목록을 안내합니다:
+```
+Unknown category 'xxx'. Valid categories: `core`, `state`, `reliability`, `advanced`, `appendix`.
+```
+
+### `get_skill` — 스킬 전체 내용 조회
+
+패턴 이름으로 해당 `SKILL.md` 전체를 반환합니다. 패턴의 정의, 트리거 문구, 구현 예제 코드를 모두 포함합니다.
+
+```
+get_skill("planning")
+get_skill("rag")
+get_skill("mcp-setup")
+get_skill("multi-agent-collaboration")
+```
+
+오타나 불완전한 이름 입력 시 유사 패턴을 제안합니다:
+```
+# 입력: get_skill("plan")
+Pattern 'plan' not found. Did you mean: `planning`?
+
+# 입력: get_skill("memory")
+Pattern 'memory' not found. Did you mean: `memory-management`?
+```
+
+패턴 이름을 전혀 모를 경우에는 `list_patterns()`로 전체 목록을 먼저 확인합니다.
+
+### `search_skills` — 키워드 검색
+
+키워드가 포함된 스킬을 28개 전체에서 검색합니다. 매칭된 스킬 이름, 매칭 횟수, 첫 번째 매칭 줄 미리보기를 반환합니다.
+
+```
+search_skills("LangGraph")
+search_skills("Thinking Budget")
+search_skills("fallback")
+search_skills("human approval")
+```
+
+출력 예시:
+```
+Found 'Thinking Budget' in 3 pattern(s):
+
+`reasoning` (5 matches)
+  → Thinking Budget controls how deeply the model reasons before responding...
+
+`resource-aware` (3 matches)
+  → Set Thinking Budget high when accuracy matters more than latency...
+
+`appendix-reasoning-engines` (8 matches)
+  → Thinking Budget is configured via thinking_config, not a separate model...
+```
+
+특정 기술(예: `LangGraph`, `Chroma`, `Redis`)이나 개념(예: `retry`, `timeout`, `fallback`)으로 검색해 관련 패턴을 빠르게 찾을 때 유용합니다.
 
 ---
 
