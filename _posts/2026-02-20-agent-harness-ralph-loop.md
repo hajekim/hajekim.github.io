@@ -2,7 +2,7 @@
 title: "Agent Harness와 Ralph Loop — Google Cloud 구현 가이드"
 date: 2026-02-20 00:00:00 +0900
 description: "Agent Harness와 Ralph Loop의 개념적 정의부터 Google Cloud 환경에서의 실제 구현 방안까지 다룬 종합 가이드"
-categories: AI
+categories: ai
 tags: [AI, Agent, GCP, "Google Cloud", ADK, "Vertex AI"]
 ---
 

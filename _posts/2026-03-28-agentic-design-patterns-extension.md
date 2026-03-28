@@ -2,7 +2,7 @@
 title: "Gemini CLI Extension으로 AI 에이전트 디자인 패턴 28개를 한 번에 — Agentic Design Patterns"
 date: 2026-03-28 00:00:00 +0900
 description: "28개의 AI 에이전트 디자인 패턴을 Gemini CLI Extension 하나로 설치하고, 슬래시 커맨드와 서브에이전트로 즉시 활용하는 방법"
-categories: AI
+categories: ai
 tags: [Gemini, "Gemini CLI", Agent, "AI Agent", GCP, ADK]
 ---
 
