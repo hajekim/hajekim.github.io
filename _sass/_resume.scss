@@ -1,0 +1,119 @@
+// Resume page — vertical timeline layout
+
+.resume {
+  h1 {
+    font-size: 28px !important;
+    color: $text-heading;
+    margin-bottom: 04px !important;
+  }
+
+  // 섹션 구분 (Work Experience, Education 등)
+  h1 + p,
+  .resume-intro {
+    color: $text-muted;
+    font-size: 15px !important;
+    margin-bottom: 24px !important;
+  }
+
+  // 섹션 헤더 (# Work Experience)
+  > h1:not(:first-child) {
+    margin-top: 40px !important;
+    padding-top: 24px;
+    border-top: 01px solid $border;
+    font-size: 22px !important;
+    color: $text-heading;
+  }
+
+  // 타임라인 아이템 (## 회사명)
+  h2 {
+    position: relative;
+    padding-left: 24px;
+    font-size: 17px !important;
+    color: $text-heading;
+    margin-top: 24px !important;
+    margin-bottom: 02px !important;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $accent;
+    }
+
+    // 타임라인 세로선
+    &::after {
+      content: "";
+      position: absolute;
+      left: 04px;
+      top: 20px;
+      width: 02px;
+      bottom: -24px;
+      background-color: $border;
+    }
+  }
+
+  // 프로젝트 헤더 (### 프로젝트명)
+  h3 {
+    padding-left: 24px;
+    font-size: 14px !important;
+    color: $accent-light;
+    font-weight: 600;
+    margin-top: 16px !important;
+    margin-bottom: 06px !important;
+  }
+
+  // 본문 텍스트
+  p {
+    padding-left: 24px;
+    color: $text-muted;
+    font-size: 14px !important;
+  }
+
+  // 리스트
+  ul, ol {
+    padding-left: 44px;
+    color: $text-muted;
+    font-size: 14px !important;
+  }
+
+  li {
+    margin-bottom: 04px;
+  }
+
+  // 링크
+  a {
+    color: $accent-light;
+
+    &:visited {
+      color: $accent-light;
+    }
+  }
+
+  // Tech Stack 뱃지 그룹
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 08px;
+    padding-left: 24px;
+    margin-top: 16px;
+  }
+
+  .tech-badge {
+    display: inline-block;
+    border: 01px solid $accent;
+    color: $accent-light;
+    border-radius: 12px;
+    padding: 03px 12px;
+    font-size: 13px !important;
+  }
+
+  // hr 섹션 구분선
+  hr {
+    border-color: $border;
+    margin: 32px 0;
+  }
+}
