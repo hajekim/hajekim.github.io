@@ -614,6 +614,38 @@ footer {
   }
 }
 
+// Post list dark theme
+.post-title--latest a {
+  color: $accent-light !important;
+}
+
+.post-tags {
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 06px;
+}
+
+.tag-badge {
+  display: inline-block;
+  border: 01px solid $accent;
+  color: $accent-light !important;
+  border-radius: 12px;
+  padding: 01px 08px;
+  font-size: 12px !important;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $accent;
+    color: $white !important;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: $accent-light !important;
+  }
+}
+
 // Profile Card (homepage)
 .profile-card {
   background-color: $bg-secondary;
