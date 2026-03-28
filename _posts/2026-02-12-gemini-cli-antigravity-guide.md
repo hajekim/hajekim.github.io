@@ -2,7 +2,7 @@
 title: "Gemini CLI & Antigravity IDE 설정 완전 가이드"
 date: 2026-02-12 00:00:00 +0900
 description: "Gemini CLI와 Google Antigravity IDE의 설정 체계, 인증, MCP, Agent Skills, 세션 관리 등 상세 구조 분석 및 통합 활용 가이드"
-categories: AI
+categories: ai
 tags: [Gemini, AI, CLI, IDE]
 ---
 
