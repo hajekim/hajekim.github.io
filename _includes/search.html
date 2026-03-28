@@ -7,7 +7,7 @@
 <section>
     <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js" type="text/javascript"></script>
         <script>
-        SimpleJekyllSearch({
+        var sjs = SimpleJekyllSearch({
             searchInput: document.getElementById('search-input'),
             resultsContainer: document.getElementById('results-container'),
             json: '{{ "/assets/data/search.json" | relative_url }}',
@@ -20,14 +20,11 @@
 
         function filterByCategory(category) {
             const input = document.getElementById('search-input');
-            if (input.value === category) {
-                input.value = '';
-            } else {
-                input.value = category;
-            }
-            input.dispatchEvent(new Event('keyup'));
+            const isActive = input.value === category;
+            input.value = isActive ? '' : category;
+            sjs.search(input.value);
             document.querySelectorAll('.category-tag').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent === category && input.value !== '');
+                btn.classList.toggle('active', btn.textContent === category && !isActive);
             });
         }
         </script>
