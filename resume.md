@@ -21,7 +21,7 @@ permalink: /resume
 - 슬래시 커맨드(`/gen-skeleton`, `/pattern-summary`), 서브에이전트(`@architect`, `@reviewer`), MCP 서버 포함
 - 영어·한국어·일본어·중국어 1,376개 트리거 문구 지원
 - [geminicli.com 갤러리 등재](https://geminicli.com/extensions/?name=hajekimagentic-design-patterns-extension)
-- [포스트 보기](/2026/03/28/agentic-design-patterns-extension/)
+- [포스트 보기](/ai/2026/03/28/agentic-design-patterns-extension/)
 
 ### 미상공회의소(AmCham Korea) 발표 | 2026.01
 - "AI-augmented Workforce" 주제 발표
