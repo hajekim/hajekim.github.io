@@ -53,7 +53,7 @@ permalink: /resume
 
 ### MLOps PoC with Google Vertex AI | 2021.08-2021.10
 - Kubeflow 및 Google Vertex AI 활용
-- [Google Vertex AI로 신용카드 이상탐지 AutoML 모델 만들기 1/2편](/data-engineering/2021/07/26/post/)
+- [Google Vertex AI로 신용카드 이상탐지 AutoML 모델 만들기 1/2편](/ml/2021/07/26/post/)
     
 ### Data Alliance 프로젝트 | 2021.06-2022.03
 - 기획자로서 진행
