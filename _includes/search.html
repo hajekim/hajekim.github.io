@@ -17,5 +17,18 @@
             fuzzy: false,
             exclude: []
         })
+
+        function filterByCategory(category) {
+            const input = document.getElementById('search-input');
+            if (input.value === category) {
+                input.value = '';
+            } else {
+                input.value = category;
+            }
+            input.dispatchEvent(new Event('keyup'));
+            document.querySelectorAll('.category-tag').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === category && input.value !== '');
+            });
+        }
         </script>
 </section>
