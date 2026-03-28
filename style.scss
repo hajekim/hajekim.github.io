@@ -8,12 +8,12 @@ html {
 }
 
 body {
-  background: $white;
+  background: $bg-primary;
   font-family: $sans-font-family;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.66666666667;
-  color: $darkGray;
+  color: $text-primary;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
@@ -47,7 +47,7 @@ ul, ol, dl, figure,
 
 h1, h2, h3, h4, h5, h6 {
   margin: 01em 0 15px;
-  color: $darkerGray;
+  color: $text-heading;
   font-family: $sans-font-family;
   font-weight: 700;
   line-height: 1.66666666667;
@@ -73,11 +73,11 @@ h6 {font-size: 14px;}
 small, .text_small {font-size: 14px;}
 
 a {
-  color: $blue;
+  color: $accent-light;
   text-decoration: none;
 
   &:visited {
-    color: $purple;
+    color: $accent-light;
   }
 
   &:hover {
@@ -138,7 +138,7 @@ hr {
   position: relative;
   margin-top: 35px;
   margin-bottom: 35px;
-  border: 01px solid $lightGray;
+  border: 01px solid $border;
 }
 
 .date {
@@ -247,9 +247,9 @@ hr {
 }
 
 blockquote {
-  background-color: $white;
-  color: $gray;
-  border-left: 04px solid #eeeeee;
+  background-color: $bg-secondary;
+  color: $text-muted;
+  border-left: 04px solid $accent;
   padding-left: 15px;
   font-size: 16px !important;
   font-style: italic;
@@ -267,10 +267,10 @@ pre,
 code {
   font-family: $code-font-family !important;
   font-size: 15px !important;
-  color: #586e75;
-  border: 01px solid #dddddd;
+  color: #e6edf3;
+  border: 01px solid $border;
   border-radius: 03px;
-  background-color: #fdf6e3;
+  background-color: $bg-secondary;
 }
 
 code {
@@ -291,11 +291,11 @@ pre {
 .highlight {
   isolation: isolate;
   border-radius: 03px;
-  background: #fdf6e3;
+  background: $bg-secondary;
   @extend %vertical-rhythm;
 
   .highlighter-rouge & {
-    background: #fdf6e3;
+    background: $bg-secondary;
   }
 }
 
@@ -345,7 +345,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   overflow-x: auto;
-  border: 01px solid #dddddd;
+  border: 01px solid $border;
 
   & + table {
     margin-top: 30px;
@@ -353,7 +353,7 @@ table {
 
   tr {
     &:nth-child(even) {
-      background-color: #efefef;
+      background-color: $bg-tertiary;
     }
   }
 
@@ -362,12 +362,12 @@ table {
   }
 
   th {
-    background-color: #efefef;
-    border: 01px solid #dddddd;
+    background-color: $bg-tertiary;
+    border: 01px solid $border;
   }
 
   td {
-    border: 01px solid #dddddd;
+    border: 01px solid $border;
   }
 
   tr,
@@ -412,13 +412,15 @@ a[href^="#fnref:"] {
 
 .wrapper-masthead {
   margin-bottom: auto;
+  background-color: $bg-secondary;
 }
 
 .masthead {
   display: flex;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 01px solid $lightGray;
+  border-bottom: 01px solid $border;
+  background-color: $bg-secondary;
 
   @include mobile {
     display: block;
@@ -455,7 +457,7 @@ a[href^="#fnref:"] {
 
 .site-name {
   margin: 0;
-  color: $darkGray;
+  color: $text-heading;
   font-family: $sans-font-family;
   font-weight: 300;
   font-size: 28px !important;
@@ -474,7 +476,7 @@ a[href^="#fnref:"] {
 
 .site-description {
   margin: -05px 0 0 0;
-  color: $gray;
+  color: $text-muted;
   font-size: 16px !important;
 
   @include mobile {
@@ -495,7 +497,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: $text-primary;
     text-align: right;
     font-weight: 300;
     letter-spacing: 01px;
@@ -579,9 +581,9 @@ a.nav-menu-item:focus {
 
 .wrapper-footer {
   margin-top: 30px;
-  border-top: 01px solid #ddd;
-  border-bottom: 01px solid #ddd;
-  background-color: $lightGray;
+  border-top: 01px solid $border;
+  border-bottom: 01px solid $border;
+  background-color: $bg-secondary;
 }
 
 footer {
