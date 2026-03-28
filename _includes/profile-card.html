@@ -1,0 +1,35 @@
+<div class="profile-card">
+  <div class="profile-card-inner">
+    <div class="profile-avatar">
+      <a href="{{ site.baseurl }}/"><img src="{{ site.avatar }}" alt="{{ site.title }}" /></a>
+    </div>
+    <div class="profile-info">
+      <h2 class="profile-name">{{ site.title }}</h2>
+      <p class="profile-description">{{ site.description }}</p>
+      {% if site.bio %}
+      <p class="profile-bio">{{ site.bio }}</p>
+      {% endif %}
+      <div class="profile-links">
+        {% for link in site.footer_links %}
+        {% if link.url contains "://" %}
+        {% assign url = link.url %}
+        {% else %}
+        {% assign url = link.url | relative_url %}
+        {% endif %}
+        <a class="profile-link-btn" href="{{ url }}" title="{{ link.title }}">
+          <i class="{{ link.icon | default: 'fa fa-link' }}"></i>&nbsp;{{ link.title }}
+        </a>
+        {% endfor %}
+        <a class="profile-link-btn profile-link-btn--accent" href="{{ site.baseurl }}/resume">Resume →</a>
+      </div>
+      <div class="profile-stack">
+        <span class="stack-badge">GCP</span>
+        <span class="stack-badge">BigQuery</span>
+        <span class="stack-badge">Kubernetes</span>
+        <span class="stack-badge">Airflow</span>
+        <span class="stack-badge">PySpark</span>
+        <span class="stack-badge">Looker</span>
+      </div>
+    </div>
+  </div>
+</div>
