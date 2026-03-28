@@ -614,6 +614,130 @@ footer {
   }
 }
 
+// Profile Card (homepage)
+.profile-card {
+  background-color: $bg-secondary;
+  border: 01px solid $border;
+  border-radius: 06px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.profile-card-inner {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.profile-avatar {
+  flex-shrink: 0;
+
+  img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 02px solid $border;
+  }
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  margin: 0 0 02px !important;
+  font-size: 20px !important;
+  color: $text-heading;
+}
+
+.profile-description {
+  margin: 0 0 04px !important;
+  color: $accent-light;
+  font-size: 14px !important;
+  font-weight: 600;
+}
+
+.profile-bio {
+  margin: 0 0 12px !important;
+  color: $text-muted;
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 06px;
+  margin-bottom: 12px;
+
+  @include mobile {
+    justify-content: center;
+  }
+}
+
+.profile-link-btn {
+  display: inline-flex;
+  align-items: center;
+  border: 01px solid $border;
+  border-radius: 04px;
+  padding: 04px 10px;
+  font-size: 13px !important;
+  color: $text-muted;
+  text-decoration: none;
+  transition: border-color $time, color $time;
+
+  &:hover {
+    border-color: $accent-light;
+    color: $accent-light;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: $text-muted;
+  }
+}
+
+.profile-link-btn--accent {
+  background-color: $accent;
+  border-color: $accent;
+  color: $white !important;
+
+  &:hover {
+    background-color: $accent-hover;
+    border-color: $accent-hover;
+    color: $white !important;
+  }
+
+  &:visited {
+    color: $white !important;
+  }
+}
+
+.profile-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 06px;
+
+  @include mobile {
+    justify-content: center;
+  }
+}
+
+.stack-badge {
+  display: inline-block;
+  border: 01px solid $accent;
+  color: $accent-light;
+  border-radius: 12px;
+  padding: 02px 10px;
+  font-size: 12px !important;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "message";
