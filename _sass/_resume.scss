@@ -33,6 +33,10 @@
     margin-top: 24px !important;
     margin-bottom: 02px !important;
 
+    br {
+      display: none;
+    }
+
     &::before {
       content: "";
       position: absolute;
