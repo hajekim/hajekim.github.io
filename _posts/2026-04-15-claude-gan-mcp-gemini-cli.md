@@ -10,6 +10,8 @@ Gemini CLI로 코드를 짜다 보면 "이게 진짜 괜찮은 코드인지"를 
 
 GAN(Generative Adversarial Network)에서 빌려온 아이디어입니다. Generator가 만들고, Discriminator가 걸러내고, 반복하면 품질이 올라가는 구조를 AI 코드 생성에 적용해봤습니다. Gemini가 평가 기준(Sprint Contract)을 직접 작성하고, Claude가 그걸 보고 구현하고, Gemini가 다시 채점합니다. Grade A가 나올 때까지.
 
+**[GitHub에서 보기 → hajekim/gan-cli](https://github.com/hajekim/gan-cli)**
+
 ```
 Gemini CLI (Evaluator — 네이티브 추론)
   │
@@ -165,5 +167,3 @@ gan-cli/
 직접 써보면서 느낀 건, 모델 하나한테 생성과 평가를 동시에 맡기는 것보다 역할을 분리했을 때 결과물 품질이 체감상 다릅니다. 자기가 짠 코드를 자기가 검토하면 놓치는 게 많은 건 사람도 마찬가지니까요.
 
 Vertex AI Claude 접근 권한이 있는 GCP 프로젝트가 필요하다는 진입장벽이 있긴 합니다만, Gemini CLI를 이미 쓰고 있다면 설정 몇 줄로 바로 붙일 수 있습니다.
-
-[hajekim/gan-cli](https://github.com/hajekim/gan-cli)
