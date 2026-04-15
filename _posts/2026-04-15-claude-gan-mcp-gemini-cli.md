@@ -1,6 +1,6 @@
 ---
 title: "Gemini CLI + Claude GAN: MCP로 AI 두 개를 협력시키는 코드 생성 루프"
-date: 2026-04-15 00:00:00 +0900
+date: 2026-04-14 00:00:00 +0000
 description: "Gemini CLI가 Evaluator로 직접 동작하고 Claude 4.6 Sonnet(Vertex AI)을 MCP 도구로 호출하는 GAN 기반 코드 생성 시스템 설치와 사용법"
 categories: ai
 tags: [Gemini, "Gemini CLI", Claude, MCP, "Vertex AI", GCP, "코드 생성"]
