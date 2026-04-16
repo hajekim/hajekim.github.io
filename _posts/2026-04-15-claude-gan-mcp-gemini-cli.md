@@ -10,7 +10,7 @@ Gemini CLI로 코드를 짜다 보면 "이게 진짜 괜찮은 코드인지"를 
 
 GAN(Generative Adversarial Network)에서 빌려온 아이디어입니다. Generator가 만들고, Discriminator가 걸러내고, 반복하면 품질이 올라가는 구조를 AI 코드 생성에 적용해봤습니다. Gemini가 평가 기준(Sprint Contract)을 직접 작성하고, Claude가 그걸 보고 구현하고, Gemini가 다시 채점합니다. Grade A가 나올 때까지.
 
-**[GitHub에서 보기 → hajekim/gan-cli](https://github.com/hajekim/gan-cli)**
+**[GitHub에서 보기 → hajekim/claude-gan](https://github.com/hajekim/claude-gan)**
 
 ```
 Gemini CLI (Evaluator — 네이티브 추론)
@@ -35,8 +35,8 @@ Gemini CLI (Evaluator — 네이티브 추론)
 ### 1. 리포지토리 클론
 
 ```bash
-git clone https://github.com/hajekim/gan-cli.git
-cd gan-cli
+git clone https://github.com/hajekim/claude-gan.git
+cd claude-gan
 ```
 
 ### 2. Python 의존성 설치
@@ -54,20 +54,20 @@ Anthropic Vertex AI SDK, FastMCP, python-dotenv, pytest가 들어있습니다.
 ```json
 {
   "mcpServers": {
-    "claude-generator": {
+    "claude-gan": {
       "command": "/path/to/python3",
-      "args": ["/절대경로/gan-cli/src/mcp_server.py"],
+      "args": ["/절대경로/claude-gan/src/mcp_server.py"],
       "env": {
         "GOOGLE_CLOUD_PROJECT": "your-gcp-project-id",
         "GOOGLE_CLOUD_LOCATION": "global",
-        "PYTHONPATH": "/절대경로/gan-cli"
+        "PYTHONPATH": "/절대경로/claude-gan"
       }
     }
   }
 }
 ```
 
-`python3` 경로는 `which python3`로, `/절대경로/gan-cli`는 클론한 실제 경로로 교체합니다.
+`python3` 경로는 `which python3`로, `/절대경로/claude-gan`는 클론한 실제 경로로 교체합니다.
 
 ### 4. 기존 GEMINI.md에 GAN 지시문 추가
 
@@ -76,7 +76,7 @@ Anthropic Vertex AI SDK, FastMCP, python-dotenv, pytest가 들어있습니다.
 **MCP 서버 목록에 추가:**
 
 ```
-- **claude-generator**: GAN 루프 코드 생성 전용. `claude_generate(task, contract, feedback)`으로
+- **claude-gan**: GAN 루프 코드 생성 전용. `claude_generate(task, contract, feedback)`으로
   Claude 4.6 Sonnet (Vertex AI)에게 구현을 위임한다.
   `save_artifact(content, filename)`, `save_progress(sprint_id, status, grade)`로 결과를 저장한다.
 ```
@@ -84,7 +84,7 @@ Anthropic Vertex AI SDK, FastMCP, python-dotenv, pytest가 들어있습니다.
 **실행 워크플로우(ACT 단계 또는 GAN 루프 섹션)에 추가:**
 
 ```
-코드 생성이 필요한 경우, 직접 작성하지 않고 claude-generator MCP에 위임한다:
+코드 생성이 필요한 경우, 직접 작성하지 않고 claude-gan MCP에 위임한다:
 1. 작업 요구사항을 분석하여 Sprint Contract(JSON DoD)를 직접 작성한다.
 2. claude_generate(task, contract, feedback="")를 호출하여 Claude의 구현을 받는다.
 3. 반환된 코드를 Skeptical Judge로서 엄격하게 평가한다 (Gemini = Evaluator).
@@ -93,7 +93,7 @@ Anthropic Vertex AI SDK, FastMCP, python-dotenv, pytest가 들어있습니다.
 코드 생성이 아닌 작업(기존 코드 수정, 설정 변경 등)은 직접 처리한다.
 ```
 
-Gemini CLI를 재시작하고 `mcp list`로 `claude-generator`가 Connected 상태인지 확인합니다.
+Gemini CLI를 재시작하고 `mcp list`로 `claude-gan`가 Connected 상태인지 확인합니다.
 
 ## 실제로 쓰면 이렇게 됩니다
 
@@ -147,7 +147,7 @@ Gemini가 먼저 Sprint Contract를 잡습니다:
 ## 프로젝트 구조
 
 ```
-gan-cli/
+claude-gan/
 ├── src/
 │   ├── mcp_server.py                # FastMCP 서버 (stdio transport)
 │   └── tools/
