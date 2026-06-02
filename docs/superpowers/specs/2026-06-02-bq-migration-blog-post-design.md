@@ -308,7 +308,39 @@ SELECT 대출관리번호,
 
 ---
 
-## 6. 구현 시 주의사항
+## 6. 참고문헌 및 공식 문서 인용
+
+포스트 내 관련 섹션에 원문 인용과 링크를 유지한다.
+
+### David Goldberg 논문 (Section 5.2)
+
+> Goldberg, D. (1991). *What Every Computer Scientist Should Know About Floating-Point Arithmetic*. ACM Computing Surveys, 23(1), 5–48.
+
+- DOI: [10.1145/103162.103163](https://dl.acm.org/doi/10.1145/103162.103163)
+- Oracle 호스팅 전문: [docs.oracle.com/…/ncg_goldberg.html](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
+
+### 각 데이터베이스 공식 문서
+
+| 플랫폼 | 문서 항목 | URL |
+|---|---|---|
+| Oracle | Numeric Data Types (NUMBER) | https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html |
+| BigQuery | NUMERIC / BIGNUMERIC types | https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#numeric_types |
+| Cloud Spanner | NUMERIC type | https://cloud.google.com/spanner/docs/reference/standard-sql/data-types#numeric_type |
+| PostgreSQL | Numeric Types (NUMERIC/DECIMAL) | https://www.postgresql.org/docs/current/datatype-numeric.html |
+| MySQL | Fixed-Point Types (DECIMAL) | https://dev.mysql.com/doc/refman/8.0/en/fixed-point-types.html |
+| Trino | DECIMAL type | https://trino.io/docs/current/language/types.html#decimal |
+| Presto | DECIMAL type | https://prestodb.io/docs/current/language/types.html#decimal |
+
+### 인용 배치 원칙
+
+- **Section 5.2**: Goldberg 논문 제목·연도·DOI 링크 인용, 논문이 다루지 못하는 현대 분산 DWH 한계 서술 시 출처 명시
+- **Section 5.1**: 각 DB 타입 설명 후 해당 공식 문서 링크를 인라인으로 배치 (예: `BIGNUMERIC` 설명 → BigQuery 문서 링크)
+- **Section 3**: Oracle NUMBER 공식 문서 링크를 스키마 매핑 설명에 포함
+- 원문 인용이 있는 경우 인용 블록(`>`)으로 표시
+
+---
+
+## 7. 구현 시 주의사항
 
 1. **오차 사례 수치 창작**: `SCALE006532`, `76,551원` 등 원본 식별자와 금액은 모두 새로 창작. 대출관리번호 패턴은 `LOAN043224` 형태(LOAN + 6자리 숫자)로 통일. 패턴(1원 하향 차이)만 유지.
 2. **Python 스크립트**: 컬럼명과 상수만 변경, 로직 동일 유지.
