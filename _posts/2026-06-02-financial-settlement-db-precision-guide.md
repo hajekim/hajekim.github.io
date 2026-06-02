@@ -1,9 +1,9 @@
 ---
 title: "금융 정산 마이그레이션에서 소수점 정밀도를 보장하는 법: 6종 데이터베이스 실증 가이드"
-date: 2026-06-02 00:00:00 +0000
+date: 2026-06-02 00:00:00 +0900
 description: "Oracle에서 BigQuery로 대출 이자 정산 쿼리를 이행할 때 발생하는 1원 소수점 오차의 원인을 분석하고, 후순위 나눗셈(Division Deferral) 기법으로 BigQuery·Spanner·PostgreSQL·MySQL·Presto·Trino 6종 데이터베이스 전체에서 100.0000% 정합성을 달성한 실증 가이드"
 categories: data
-tags: [BigQuery, Oracle, Spanner, PostgreSQL, MySQL, Presto, Trino, 소수점 정밀도, 마이그레이션, 금융 정산]
+tags: [BigQuery, Oracle, Spanner, PostgreSQL, MySQL, Presto, Trino, "소수점 정밀도", 마이그레이션, "금융 정산"]
 ---
 
 ## 1. 도입
