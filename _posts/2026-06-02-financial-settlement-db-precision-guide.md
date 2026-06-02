@@ -517,17 +517,31 @@ SELECT 대출관리번호
 
 #### 리터럴 상수 처리
 
-BigQuery SQL에서 `30`이나 `36500` 같은 정수 리터럴은 `INT64`로, 소수 리터럴 `0.5`는 `FLOAT64`로 자동 추론됩니다. `BIGNUMERIC` 컬럼과 섞이면 컴파일 오류가 나거나 조용히 `FLOAT64`로 변환됩니다.
+BigQuery SQL에서 `30`이나 `36500` 같은 정수 리터럴은 `INT64`로, 소수 리터럴 `0.5`는 `FLOAT64`로 자동 추론됩니다. `BIGNUMERIC` 컬럼과 다른 타입 리터럴을 섞어서 산술 연산하면 컴파일 타임에 이런 오류가 납니다:
+
+```
+No matching signature for operator * for argument types: BIGNUMERIC, FLOAT64
+```
+
+오류를 마주한 개발자가 빠지기 쉬운 함정이 있습니다. 오류 메시지를 없애려고 컬럼을 반대 방향으로 낮추는 것입니다.
 
 ```sql
--- 리터럴을 그냥 쓰면 INT64 또는 FLOAT64로 추론됩니다
-대출잔액 * 약정금리 * (경과일수 + 30) / 36500
+-- 잘못된 해결: BIGNUMERIC을 FLOAT64로 낮춰서 오류를 없앰
+CAST(대출잔액 AS FLOAT64) * 약정금리 * (경과일수 + 30.0) / 36500.0
+```
 
--- BIGNUMERIC 프리픽스로 타입을 명시합니다
+오류는 사라지지만 결과가 더 나빠집니다. `FLOAT64`는 IEEE 754 이진 부동소수점이라 십진 소수를 정확하게 표현하지 못합니다. `30.0`이나 `36500.0`처럼 단순해 보이는 값도 내부적으로 근사치로 저장됩니다. 이 상태에서 계산을 이어가면 오차가 연산마다 누적되어 최종 결과에서 원치 않는 차이가 발생합니다.
+
+올바른 방향은 반대입니다. 리터럴을 `BIGNUMERIC`으로 올려서 수식 전체를 고정소수점 영역에서 유지합니다.
+
+```sql
+-- 올바른 해결: 리터럴을 BIGNUMERIC으로 올림
 CAST(대출잔액 AS BIGNUMERIC) * CAST(약정금리 AS BIGNUMERIC)
   * (CAST(경과일수 AS BIGNUMERIC) + BIGNUMERIC '30')
   / BIGNUMERIC '36500'
 ```
+
+`BIGNUMERIC '30'` 처럼 프리픽스 리터럴 표기를 쓰면 `CAST(30 AS BIGNUMERIC)`과 동일하게 동작하면서 더 간결합니다.
 
 #### UNION ALL 4단계 방어
 
