@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /resume
+
+User-agent: *
+Allow: /
