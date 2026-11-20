@@ -69,7 +69,7 @@ Remote Agents는 내 컴퓨터 하드디스크에 직접 접근하지 않습니�
 - GitHub 저장소: OAuth 인증을 마치면 클라우드 환경으로 저장소를 가져와 코드를 읽고 수정하며, 테스트 후 Pull Request를 여는 작업까지 처리합니다.
 - Google Drive 파일: 드라이브에 올려둔 문서나 스프레드시트를 프로젝트에 붙여 참고 자료로 활용합니다.
 - 직접 업로드한 파일: 내 컴퓨터에 있는 파일을 프로젝트로 바로 올릴 수 있습니다. 파일 하나당 최대 8 MiB, 프로젝트당 최대 50개(총 100 MiB), 계정 전체 기준 최대 2 GiB까지 지원합니다.
-- Antigravity Marketplace 플러그인: GitHub, Google Drive, Docs, Sheets, Slides, Calendar 같은 외부 서비스 플러그인을 연결해 에이전트가 할 수 있는 작업 범위를 넓힐 수 있습니다.
+- Antigravity Marketplace 플러그인: GitHub, Google Drive, Docs, Sheets, Slides, Calendar, Gmail 같은 외부 서비스 플러그인을 연결해 에이전트가 할 수 있는 작업 범위를 넓힐 수 있습니다.
 
 ### 시작하고 이어서 작업하는 법
 
@@ -107,7 +107,7 @@ agy --remote-agent -c
 
 ### AGENTS.md로 작업 규칙 정하기
 
-`AGENTS.md`는 에이전트가 작업을 시작할 때마다 자동으로 참고하는 상시 지침서입니다. 매번 프롬프트에 같은 주의 사항을 반복해서 적을 필요 없이, 프로젝트의 기본 원칙을 파일 하나에 정리해 두는 용도로 씁니다.
+`AGENTS.md`는 에이전트가 작업을 시작할 때마다 자동으로 참고하는 상시 지침서입니다. 매번 프롬프트에 같은 주의 사항을 반복해서 적을 필요 없이, 프로젝트의 기본 원칙을 파일 하나에 정리해 두는 용도로 씁니다. 웹 UI 자체에 별도의 `AGENTS.md` 전용 편집 메뉴가 따로 있지는 않지만, 아래 방법으로 파일 기반 규칙을 그대로 적용할 수 있습니다.
 
 - 비개발자 활용 예: 보고서 문체(한국어 존댓말 사용), 문서 구성 순서(요약, 본론, 다음 할 일), 숫자·날짜 표기 기준, 출처 없는 추정 금지 같은 작성 원칙을 적어둡니다.
 - 개발자 활용 예: 코드 스타일, 필수 테스트 실행 규칙, 사용 금지 라이브러리, 커밋·PR 작성 규칙을 적어둡니다.
@@ -151,14 +151,24 @@ description: 회의 메모와 문서를 바탕으로 팀 주간 보고서 초안
 
 Remote Agents에서는 GitHub 저장소의 `.agents/skills/` 경로에 스킬을 넣어두거나, 앞서 본 환경 설정 예시 화면처럼 에이전트에게 "이 프로젝트의 환경 구성과 작업 절차를 `SKILL.md`로 만들어 줘"라고 지시해 프로젝트 전용 스킬을 자동으로 생성하고 다음 세션에서 재사용할 수 있습니다.
 
+직접 폴더나 파일을 만들지 않고도 채팅으로 공개 스킬을 바로 설치할 수 있습니다. 아래 모바일 화면처럼 채팅창에 원하는 스킬 설치를 요청하면 에이전트가 원격 환경에 스킬을 등록하고 바로 `/humanizer` 같은 명령으로 사용할 수 있게 준비해 줍니다.
+
+<img src="/assets/image/posts/2026-11-20-antigravity-2-web/12-skills-mobile-install.png" alt="모바일 Antigravity Web 채팅창에서 공개 스킬을 설치한 화면" style="max-width: 360px; width: 100%; border-radius: 12px; border: 1px solid #30363d;">
+
 ### Customizations에서 외부 커넥터 연결하기
 
 에이전트가 텍스트로 답하는 수준을 넘어 실제 외부 도구에 들어가 문서를 읽고, 시트를 수정하고, GitHub Pull Request를 올리려면 외부 커넥터 연결이 필요합니다. Antigravity Web에서는 좌측 사이드바의 `Customizations` 메뉴에서 이 작업을 처리합니다.
 
+![Customizations Marketplace에서 Google Workspace와 GitHub 앱을 연결하는 화면](/assets/image/posts/2026-11-20-antigravity-2-web/13-customizations-marketplace.png)
+
 1. 좌측 메뉴에서 `Customizations`를 열고 `Marketplace` 탭으로 이동합니다.
-2. GitHub, Google Drive, Docs, Sheets, Slides, Calendar 등 필요한 외부 앱(플러그인)을 찾습니다.
+2. GitHub, Google Drive, Docs, Sheets, Slides, Calendar, Gmail 등 필요한 외부 앱(플러그인)을 찾습니다.
 3. 앱 카드의 `Connect` 버튼을 눌러 OAuth 로그인 인증을 마칩니다. 별도 로그인이 필요 없는 앱은 `Ready` 상태로 바로 쓸 수 있습니다.
 4. 연결이 완료된 앱은 `Connected` 목록에 표시되며, 각 앱을 열어 연결된 계정을 확인하거나 연결을 해제·재연결할 수 있습니다.
+
+`Customizations` 메뉴로 직접 이동하지 않고 대화창에서 바로 연결할 수도 있습니다. 아래 모바일 화면처럼 채팅창에 연동하고 싶은 서비스를 말하면 에이전트가 인라인 연동 카드를 띄워 주고, 카드에서 바로 OAuth 인증을 마칠 수 있습니다.
+
+<img src="/assets/image/posts/2026-11-20-antigravity-2-web/14-connectors-mobile-chat.png" alt="모바일 채팅창에서 자연어로 외부 서비스 커넥터를 바로 연동하는 화면" style="max-width: 360px; width: 100%; border-radius: 12px; border: 1px solid #30363d;">
 
 `Customizations`에서 연결한 앱은 특정 PC가 아니라 사용자의 Google 계정에 저장됩니다. 한 번만 연결해 두면 회사 PC, 집 노트북, 스마트폰 브라우저 어디서 Remote Agents를 열더라도 같은 커넥터를 그대로 활용할 수 있습니다.
 
